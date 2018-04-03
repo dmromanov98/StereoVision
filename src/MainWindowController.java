@@ -1,6 +1,8 @@
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXSlider;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -26,12 +28,65 @@ public class MainWindowController implements Initializable {
     @FXML
     StackPane stackPane;
 
+    @FXML
+    JFXSlider scrollHueStart;
+    @FXML
+    JFXSlider scrollHueStop;
+
+    @FXML
+    JFXSlider scrollSaturationStart;
+    @FXML
+    JFXSlider scrollSaturationStop;
+
+    @FXML
+    JFXSlider scrollValueStart;
+    @FXML
+    JFXSlider scrollValueStop;
+
+    @FXML
+    ImageView mode2Camera1;
+    @FXML
+    ImageView mode2Camera11;
+    @FXML
+    ImageView mode2Camera12;
+
+    @FXML
+    ImageView mode2Camera2;
+    @FXML
+    ImageView mode2Camera21;
+    @FXML
+    ImageView mode2Camera22;
+
     private FrameGrabber[] grabbers;
     private static byte[] camerasID;
     private static boolean[] camerasIsOnline;
 
     public static boolean[] getCamerasIsOnline() {
         return camerasIsOnline;
+    }
+
+    public JFXSlider getScrollHueStart() {
+        return scrollHueStart;
+    }
+
+    public JFXSlider getScrollHueStop() {
+        return scrollHueStop;
+    }
+
+    public JFXSlider getScrollSaturationStart() {
+        return scrollSaturationStart;
+    }
+
+    public JFXSlider getScrollSaturationStop() {
+        return scrollSaturationStop;
+    }
+
+    public JFXSlider getScrollValueStart() {
+        return scrollValueStart;
+    }
+
+    public JFXSlider getScrollValueStop() {
+        return scrollValueStop;
     }
 
     public static void setCamerasIsOnline(boolean[] camerasIsOnline) {
@@ -122,8 +177,28 @@ public class MainWindowController implements Initializable {
         grabbers = new FrameGrabber[2];
         camerasID = new byte[]{0, 1};
         camerasIsOnline = new boolean[]{false, false};
+        scrollHueStart.setValue(0);
+        scrollHueStop.setValue(180);
+        scrollSaturationStart.setValue(0);
+        scrollSaturationStop.setValue(255);
+        scrollValueStart.setValue(0);
+        scrollValueStop.setValue(255);
         //cameraOne.fitWidthProperty().bind(stackPane.widthProperty());
         //cameraOne.fitHeightProperty().bind(stackPane.heightProperty());
     }
 
+    public void mode2ImageShow(String cam, Image image) {
+        if (cam.equals("01"))
+            Utils.onFXThread(mode2Camera11.imageProperty(), image);
+        if (cam.equals("02"))
+            Utils.onFXThread(mode2Camera12.imageProperty(), image);
+        if (cam.equals("11"))
+            Utils.onFXThread(mode2Camera21.imageProperty(), image);
+        if (cam.equals("12"))
+            Utils.onFXThread(mode2Camera22.imageProperty(), image);
+    }
+
+    public void outMat(ActionEvent actionEvent) {
+        System.out.println(FrameGrabber.getMorph().dump());
+    }
 }

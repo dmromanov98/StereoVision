@@ -12,7 +12,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="538.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/9.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
     <children>
         <JFXTabPane>
             <tabs>
@@ -20,46 +22,97 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <JFXButton fx:id="buttonOne" buttonType="RAISED" layoutX="14.0" layoutY="326.0" onAction="#startFirstCamera" style="-fx-background-color: #3797ff;" text="Start camera 1" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" />
-                                <JFXButton fx:id="buttonTwo" buttonType="RAISED" layoutX="493.0" layoutY="326.0" onAction="#startSecondCamera" style="-fx-background-color: #3797ff;" text="Start camera 2" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-                                <ImageView fx:id="cameraOne" fitHeight="250.0" fitWidth="250.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
-                                <ImageView fx:id="cameraTwo" fitHeight="250.0" fitWidth="250.0" layoutX="318.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
-                                <JFXButton buttonType="RAISED" layoutX="119.0" layoutY="326.0" onAction="#changeFirstCamera" style="-fx-background-color: #3797ff;" text="Change 1st Camera" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="125.0" />
-                                <JFXButton buttonType="RAISED" layoutX="362.0" layoutY="326.0" onAction="#changeSecondCamera" style="-fx-background-color: #3797ff;" text="Change 2nd Camera" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="125.0" />
+                                <JFXButton fx:id="buttonOne" buttonType="RAISED" layoutX="14.0" layoutY="326.0"
+                                           onAction="#startFirstCamera" style="-fx-background-color: #3797ff;"
+                                           text="Start camera 1" textFill="WHITE" AnchorPane.bottomAnchor="15.0"
+                                           AnchorPane.leftAnchor="15.0"/>
+                                <JFXButton fx:id="buttonTwo" buttonType="RAISED" layoutX="493.0" layoutY="326.0"
+                                           onAction="#startSecondCamera" style="-fx-background-color: #3797ff;"
+                                           text="Start camera 2" textFill="WHITE" AnchorPane.bottomAnchor="15.0"
+                                           AnchorPane.rightAnchor="15.0"/>
+                                <ImageView fx:id="cameraOne" fitHeight="375.0" fitWidth="375.0" layoutX="14.0"
+                                           layoutY="33.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+                                <ImageView fx:id="cameraTwo" fitHeight="375.0" fitWidth="375.0" layoutX="318.0"
+                                           layoutY="33.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+                                <JFXButton buttonType="RAISED" layoutX="119.0" layoutY="326.0"
+                                           onAction="#changeFirstCamera" style="-fx-background-color: #3797ff;"
+                                           text="Change 1st Camera" textFill="WHITE" AnchorPane.bottomAnchor="15.0"
+                                           AnchorPane.leftAnchor="125.0"/>
+                                <JFXButton buttonType="RAISED" layoutX="362.0" layoutY="326.0"
+                                           onAction="#changeSecondCamera" style="-fx-background-color: #3797ff;"
+                                           text="Change 2nd Camera" textFill="WHITE" AnchorPane.bottomAnchor="15.0"
+                                           AnchorPane.rightAnchor="125.0"/>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Mode 2">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="624.0">
+                            <children>
+                                <JFXSlider fx:id="scrollHueStart" layoutX="14.0" layoutY="51.0" max="180.0"
+                                           AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="51.0"/>
+                                <Label layoutX="168.0" layoutY="50.0" text="Hue Start"/>
+                                <JFXSlider fx:id="scrollHueStop" layoutX="14.0" layoutY="78.0" max="180.0"/>
+                                <Label layoutX="169.0" layoutY="78.0" text="Hue Stop"/>
+                                <JFXSlider fx:id="scrollSaturationStart" layoutX="14.0" layoutY="109.0" max="255.0"/>
+                                <Label layoutX="169.0" layoutY="109.0" text="Saturation Start"/>
+                                <JFXSlider fx:id="scrollSaturationStop" layoutX="15.0" layoutY="137.0" max="255.0"/>
+                                <Label layoutX="170.0" layoutY="137.0" text="Saturation Stop"/>
+                                <JFXSlider fx:id="scrollValueStart" layoutX="15.0" layoutY="166.0" max="255.0"/>
+                                <Label layoutX="170.0" layoutY="166.0" text="Value Start"/>
+                                <JFXSlider fx:id="scrollValueStop" layoutX="16.0" layoutY="194.0" max="255.0"/>
+                                <Label layoutX="171.0" layoutY="194.0" text="Value Stop"/>
+                                <ImageView fx:id="mode2Camera11" fitHeight="230.0" fitWidth="230.0" layoutX="575.0"
+                                           layoutY="15.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="15.0"/>
+                                <ImageView fx:id="mode2Camera12" fitHeight="230.0" fitWidth="230.0" layoutX="295.0"
+                                           layoutY="15.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+                                <ImageView fx:id="mode2Camera21" fitHeight="230.0" fitWidth="230.0" layoutX="631.0"
+                                           layoutY="191.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="250.0"/>
+                                <ImageView fx:id="mode2Camera22" fitHeight="230.0" fitWidth="230.0" layoutX="631.0"
+                                           layoutY="298.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
+                                <JFXButton layoutX="16.0" layoutY="463.0" onAction="#outMat"
+                                           style="-fx-background-color: #3797ff;" textFill="WHITE" text="Out Mat"/>
+                            </children>
+                        </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Settings">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <JFXToggleButton layoutX="14.0" layoutY="29.0" text="Custom RGB for camera 1" />
-                                <JFXToggleButton layoutX="14.0" layoutY="87.0" text="Custom RGB for camera 2" />
-                                <JFXSlider layoutX="277.0" layoutY="52.0" />
-                                <JFXSlider layoutX="277.0" layoutY="81.0" />
-                                <JFXSlider layoutX="277.0" layoutY="110.0" />
-                                <Label layoutX="247.0" layoutY="43.0" prefHeight="17.0" prefWidth="0.0" text="R" textFill="RED">
+                                <JFXToggleButton layoutX="14.0" layoutY="29.0" text="Custom RGB for camera 1"/>
+                                <JFXToggleButton layoutX="14.0" layoutY="87.0" text="Custom RGB for camera 2"/>
+                                <JFXSlider layoutX="277.0" layoutY="52.0"/>
+                                <JFXSlider layoutX="277.0" layoutY="81.0"/>
+                                <JFXSlider layoutX="277.0" layoutY="110.0"/>
+                                <Label layoutX="247.0" layoutY="43.0" prefHeight="17.0" prefWidth="0.0" text="R"
+                                       textFill="RED">
                                     <font>
-                                        <Font name="Tahoma" size="20.0" />
+                                        <Font name="Tahoma" size="20.0"/>
                                     </font>
                                 </Label>
-                                <Label layoutX="247.0" layoutY="75.0" prefHeight="17.0" prefWidth="0.0" text="G" textFill="#00ff1a">
+                                <Label layoutX="247.0" layoutY="75.0" prefHeight="17.0" prefWidth="0.0" text="G"
+                                       textFill="#00ff1a">
                                     <font>
-                                        <Font name="Tahoma" size="20.0" />
+                                        <Font name="Tahoma" size="20.0"/>
                                     </font>
                                 </Label>
-                                <Label layoutX="247.0" layoutY="104.0" prefHeight="17.0" prefWidth="0.0" text="B" textFill="#3300ff">
+                                <Label layoutX="247.0" layoutY="104.0" prefHeight="17.0" prefWidth="0.0" text="B"
+                                       textFill="#3300ff">
                                     <font>
-                                        <Font name="Tahoma" size="20.0" />
+                                        <Font name="Tahoma" size="20.0"/>
                                     </font>
                                 </Label>
-                                <JFXTextField focusColor="#0040ff" labelFloat="true" layoutX="14.0" layoutY="158.0" prefHeight="25.0" prefWidth="189.0" promptText="Distance between cameras (m):" unFocusColor="#05b9ff" />
+                                <JFXTextField focusColor="#0040ff" labelFloat="true" layoutX="14.0" layoutY="158.0"
+                                              prefHeight="25.0" prefWidth="189.0"
+                                              promptText="Distance between cameras (m):" unFocusColor="#05b9ff"/>
                             </children>
                         </AnchorPane>
                     </content>
