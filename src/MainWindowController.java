@@ -1,15 +1,17 @@
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXSlider;
-import javafx.event.ActionEvent;
+
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +58,9 @@ public class MainWindowController implements Initializable {
     ImageView mode2Camera21;
     @FXML
     ImageView mode2Camera22;
+
+    @FXML
+    JFXColorPicker colorPicker;
 
     private FrameGrabber[] grabbers;
     private static byte[] camerasID;
@@ -198,7 +203,20 @@ public class MainWindowController implements Initializable {
             Utils.onFXThread(mode2Camera22.imageProperty(), image);
     }
 
-    public void outMat(ActionEvent actionEvent) {
-        System.out.println(FrameGrabber.getMorph().dump());
+
+    public void setColor() {
+        Color color = colorPicker.getValue();
+        Mat mat = new Mat(1,1,CvType.CV_8UC3,
+                new Scalar(color.getRed()*256,color.getGreen()*256,color.getBlue()*256));
+        Mat hsv = new Mat();
+        Imgproc.cvtColor(mat,hsv,Imgproc.COLOR_BGR2HSV);
+        //double [] bgrColor = hsv.get();
+
+        byte buff[] = new byte[(int) (hsv.total() * hsv.channels())];
+        System.out.println(hsv.get(1, 0, buff));
+
+        System.out.println(mat.dump()+"\n"+hsv.dump());
     }
+
+
 }

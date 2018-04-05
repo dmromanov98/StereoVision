@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.ImageView?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXColorPicker?>
 <StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
            prefHeight="538.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/9.0.1"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainWindowController">
@@ -77,8 +79,9 @@
                                 <ImageView fx:id="mode2Camera22" fitHeight="230.0" fitWidth="230.0" layoutX="631.0"
                                            layoutY="298.0" pickOnBounds="true" preserveRatio="true"
                                            AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
-                                <JFXButton layoutX="16.0" layoutY="463.0" onAction="#outMat"
-                                           style="-fx-background-color: #3797ff;" textFill="WHITE" text="Out Mat"/>
+                                <JFXButton layoutX="16.0" layoutY="463.0" onAction="#setColor"
+                                           style="-fx-background-color: #3797ff;" text="Set color" textFill="WHITE"/>
+                                <JFXColorPicker fx:id="colorPicker" layoutX="22.0" layoutY="232.0"/>
                             </children>
                         </AnchorPane>
                     </content>
