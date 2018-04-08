@@ -1,9 +1,9 @@
+package CamerasUIWindow;
+
 import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
 import javafx.scene.image.Image;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.video.Video;
 import org.opencv.videoio.VideoCapture;
 
 import java.util.ArrayList;
@@ -21,13 +21,6 @@ public class FrameGrabber implements Runnable {
     private MainWindowController mwc;
     private boolean cameraActive = false;
 
-    public byte getCameraId() {
-        return cameraId;
-    }
-
-    public void setCameraId(byte cameraId) {
-        this.cameraId = cameraId;
-    }
 
     public FrameGrabber(byte cameraId, byte whichImageView, MainWindowController mwc) {
         this.cameraId = cameraId;
@@ -85,7 +78,7 @@ public class FrameGrabber implements Runnable {
                 this.timer = Executors.newSingleThreadScheduledExecutor();
                 this.timer.scheduleAtFixedRate(this, 0, 33, TimeUnit.MILLISECONDS);
 
-                toWindow("Stop camera " + whichImageView);
+                toWindow("Stop camera " + (whichImageView + 1));
 
             } else {
 
@@ -96,7 +89,7 @@ public class FrameGrabber implements Runnable {
 
             this.cameraActive = false;
             //Thread.currentThread().interrupt();
-            toWindow("Start camera " + whichImageView);
+            toWindow("Start camera " + (whichImageView + 1));
 
             // stop the timer
             this.stopAcquisition();
@@ -158,30 +151,6 @@ public class FrameGrabber implements Runnable {
 
     }
 
-//    private Mat grabFrame() {
-//        // init everything
-//        Mat frame = new Mat();
-//
-//        // check if the capture is open
-//        if (this.capture.isOpened()) {
-//            try {
-//                // read the current frame
-//                this.capture.read(frame);
-//
-//                // if the frame is not empty, process it
-//                if (!frame.empty()) {
-//                    Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
-//                }
-//
-//            } catch (Exception e) {
-//                toWindow("Exception during the image elaboration: ", e.toString());
-//            }
-//        }
-//
-//        return frame;
-//    }
-
-
     static public Mat getMorph() {
         return morph;
     }
@@ -217,7 +186,7 @@ public class FrameGrabber implements Runnable {
                     Scalar minValues = new Scalar(mwc.getScrollHueStart().getValue(), mwc.getScrollSaturationStart().getValue(),
                             mwc.getScrollValueStart().getValue());
 
-                    Scalar maxValues = new Scalar(mwc.scrollHueStop.getValue(), mwc.getScrollSaturationStop().getValue(),
+                    Scalar maxValues = new Scalar(mwc.getScrollHueStop().getValue(), mwc.getScrollSaturationStop().getValue(),
                             mwc.getScrollValueStop().getValue());
 
 
@@ -244,7 +213,7 @@ public class FrameGrabber implements Runnable {
                     toWindow(String.valueOf(whichImageView) + "2", Utils.mat2Image(morphOutput));
 
                     Image image = Utils.mat2Image(morphOutput);
-                    System.out.println();
+                    //System.out.println();
 
                     // find the objects contours and show them
                     frame = this.findAndDrawContours(morphOutput, frame);

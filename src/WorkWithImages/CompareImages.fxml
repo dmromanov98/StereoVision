@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="WorkWithImages.CompareImagesController">
+    <children>
+        <ImageView fx:id="imgL" fitHeight="495.0" fitWidth="495.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+        <ImageView fx:id="imgR" fitHeight="495.0" fitWidth="495.0" layoutX="778.0" layoutY="14.0" pickOnBounds="true"
+                   preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+        <JFXButton fx:id="btnCompare" buttonType="RAISED" layoutX="443.0" layoutY="572.0" onAction="#compareImages"
+                   ripplerFill="RED" text="COMPARE">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </JFXButton>
+    </children>
+</AnchorPane>

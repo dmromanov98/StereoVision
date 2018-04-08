@@ -1,17 +1,17 @@
+package WorkWithImages;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
 import java.io.IOException;
 
-public class MainWIndow extends Application {
-
-
+public class Main extends Application  {
     private Stage primaryStage;
-    private StackPane rootLayout;
+    private AnchorPane rootLayout;
 
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class MainWIndow extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("StereoVisionWithOpenCv");
+        this.primaryStage.setTitle("ComparingImagesTest");
         initWindow();
     }
 
@@ -30,7 +30,7 @@ public class MainWIndow extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainWIndow.class.getResource("MainWindow.fxml"));
+            loader.setLocation(Main.class.getResource("CompareImages.fxml"));
             rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

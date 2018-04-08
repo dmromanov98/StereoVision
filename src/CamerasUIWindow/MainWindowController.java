@@ -1,3 +1,4 @@
+package CamerasUIWindow;
 
 import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
@@ -19,48 +20,44 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
     @FXML
-    ImageView cameraOne; //id = 0
+    private ImageView cameraOne; //id = 0
     @FXML
-    ImageView cameraTwo; //id = 1
+    private ImageView cameraTwo; //id = 1
 
     @FXML
-    JFXButton buttonOne; //id = 0
+    private JFXButton buttonOne; //id = 0
     @FXML
-    JFXButton buttonTwo; //id = 1
+    private JFXButton buttonTwo; //id = 1
     @FXML
-    StackPane stackPane;
+    private StackPane stackPane;
 
     @FXML
-    JFXSlider scrollHueStart;
+    private JFXSlider scrollHueStart;
     @FXML
-    JFXSlider scrollHueStop;
+    private JFXSlider scrollHueStop;
 
     @FXML
-    JFXSlider scrollSaturationStart;
+    private JFXSlider scrollSaturationStart;
     @FXML
-    JFXSlider scrollSaturationStop;
+    private JFXSlider scrollSaturationStop;
 
     @FXML
-    JFXSlider scrollValueStart;
+    private JFXSlider scrollValueStart;
     @FXML
-    JFXSlider scrollValueStop;
+    private JFXSlider scrollValueStop;
 
     @FXML
-    ImageView mode2Camera1;
+    private ImageView mode2Camera11;
     @FXML
-    ImageView mode2Camera11;
-    @FXML
-    ImageView mode2Camera12;
+    private ImageView mode2Camera12;
 
     @FXML
-    ImageView mode2Camera2;
+    private ImageView mode2Camera21;
     @FXML
-    ImageView mode2Camera21;
-    @FXML
-    ImageView mode2Camera22;
+    private ImageView mode2Camera22;
 
     @FXML
-    JFXColorPicker colorPicker;
+    private JFXColorPicker colorPicker;
 
     private FrameGrabber[] grabbers;
     private static byte[] camerasID;
@@ -188,8 +185,6 @@ public class MainWindowController implements Initializable {
         scrollSaturationStop.setValue(255);
         scrollValueStart.setValue(0);
         scrollValueStop.setValue(255);
-        //cameraOne.fitWidthProperty().bind(stackPane.widthProperty());
-        //cameraOne.fitHeightProperty().bind(stackPane.heightProperty());
     }
 
     public void mode2ImageShow(String cam, Image image) {
@@ -210,12 +205,18 @@ public class MainWindowController implements Initializable {
                 new Scalar(color.getRed()*256,color.getGreen()*256,color.getBlue()*256));
         Mat hsv = new Mat();
         Imgproc.cvtColor(mat,hsv,Imgproc.COLOR_BGR2HSV);
-        //double [] bgrColor = hsv.get();
-
-        byte buff[] = new byte[(int) (hsv.total() * hsv.channels())];
-        System.out.println(hsv.get(1, 0, buff));
+        double[] hcvValues = hsv.get(0, 0);
 
         System.out.println(mat.dump()+"\n"+hsv.dump());
+
+        scrollHueStart.setValue(hcvValues[0]);
+        scrollHueStop.setValue((int) hcvValues[0]*4.8);
+
+        scrollSaturationStart.setValue( (int) hcvValues[1]*0.52);
+        scrollSaturationStop.setValue(hcvValues[1]);
+
+        scrollValueStart.setValue((int)hcvValues[2]*0.54);
+        scrollValueStop.setValue(hcvValues[2]);
     }
 
 
