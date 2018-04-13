@@ -3,15 +3,14 @@ package CamerasUIWindow;
 import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
+import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 
 import java.net.URL;
@@ -59,13 +58,29 @@ public class MainWindowController implements Initializable {
     @FXML
     private JFXColorPicker colorPicker;
 
-    private FrameGrabber[] grabbers;
-    private static byte[] camerasID;
-    private static boolean[] camerasIsOnline;
+    @FXML
+    private JFXTextField distanceBetweenCamerasField;
 
-    public static boolean[] getCamerasIsOnline() {
-        return camerasIsOnline;
-    }
+    @FXML
+    private JFXTextField focalLengthField;
+
+    @FXML
+    private Label lblDistance1;
+
+    @FXML
+    private Label lblDistance2;
+
+    @FXML
+    private Label lblDistance3;
+
+    @FXML
+    private JFXButton startShowDistanceButton;
+
+    private DistanceThread distanceThread;
+    private Thread distanceShow;
+    protected static FrameGrabber[] grabbers;
+    private static byte[] camerasID;
+
 
     public JFXSlider getScrollHueStart() {
         return scrollHueStart;
@@ -89,10 +104,6 @@ public class MainWindowController implements Initializable {
 
     public JFXSlider getScrollValueStop() {
         return scrollValueStop;
-    }
-
-    public static void setCamerasIsOnline(boolean[] camerasIsOnline) {
-        MainWindowController.camerasIsOnline = camerasIsOnline;
     }
 
     public static byte[] getCamerasID() {
@@ -119,6 +130,7 @@ public class MainWindowController implements Initializable {
             grabbers[0] = new FrameGrabber(camerasID[0], (byte) 0, this);
             grabbers[0].init();
         } else {
+            startShowingDistance();
             grabbers[0].init();
             grabbers[0] = null;
         }
@@ -146,6 +158,7 @@ public class MainWindowController implements Initializable {
             grabbers[1] = new FrameGrabber(camerasID[1], (byte) 1, this);
             grabbers[1].init();
         } else {
+            startShowingDistance();
             grabbers[1].init();
             grabbers[1] = null;
         }
@@ -161,30 +174,27 @@ public class MainWindowController implements Initializable {
     }
 
     public void changeFirstCamera() {
-        if (grabbers[0] != null) {
-            grabbers[0].changeCamera();
-        } else
-            dialogWindow("First press the start button", "");
+
     }
 
     public void changeSecondCamera() {
-        if (grabbers[1] != null) {
-            grabbers[1].changeCamera();
-        } else
-            dialogWindow("First press the start button", "");
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         grabbers = new FrameGrabber[2];
         camerasID = new byte[]{0, 1};
-        camerasIsOnline = new boolean[]{false, false};
         scrollHueStart.setValue(0);
         scrollHueStop.setValue(180);
         scrollSaturationStart.setValue(0);
         scrollSaturationStop.setValue(255);
         scrollValueStart.setValue(0);
         scrollValueStop.setValue(255);
+
+        distanceBetweenCamerasField.setText(String.valueOf(DistanceToTheObject.getDistanceBetweenCameras()));
+        focalLengthField.setText(String.valueOf(DistanceToTheObject.getFocus()));
+
     }
 
     public void mode2ImageShow(String cam, Image image) {
@@ -201,23 +211,57 @@ public class MainWindowController implements Initializable {
 
     public void setColor() {
         Color color = colorPicker.getValue();
-        Mat mat = new Mat(1,1,CvType.CV_8UC3,
-                new Scalar(color.getRed()*256,color.getGreen()*256,color.getBlue()*256));
+        Mat mat = new Mat(1, 1, CvType.CV_8UC3,
+                new Scalar(color.getRed() * 256, color.getGreen() * 256, color.getBlue() * 256));
         Mat hsv = new Mat();
-        Imgproc.cvtColor(mat,hsv,Imgproc.COLOR_BGR2HSV);
+        Imgproc.cvtColor(mat, hsv, Imgproc.COLOR_BGR2HSV);
         double[] hcvValues = hsv.get(0, 0);
 
-        System.out.println(mat.dump()+"\n"+hsv.dump());
+        System.out.println(mat.dump() + "\n" + hsv.dump());
 
         scrollHueStart.setValue(hcvValues[0]);
-        scrollHueStop.setValue((int) hcvValues[0]*4.8);
+        scrollHueStop.setValue((int) hcvValues[0] * 4.8);
 
-        scrollSaturationStart.setValue( (int) hcvValues[1]*0.52);
+        scrollSaturationStart.setValue((int) hcvValues[1] * 0.52);
         scrollSaturationStop.setValue(hcvValues[1]);
 
-        scrollValueStart.setValue((int)hcvValues[2]*0.54);
+        scrollValueStart.setValue((int) hcvValues[2] * 0.54);
         scrollValueStop.setValue(hcvValues[2]);
     }
 
+
+    public void setDistanceBetweenCameras() {
+        if (Test.testOnNumber(distanceBetweenCamerasField.getText()))
+            DistanceToTheObject.setDistanceBetweenCameras(Double.valueOf(distanceBetweenCamerasField.getText()));
+        else
+            dialogWindow("Distance between cameras", "MUST BE A NUMBER!");
+    }
+
+    public void setFocalLength() {
+        if (Test.testOnNumber(focalLengthField.getText()))
+            DistanceToTheObject.setFocus(Double.valueOf(focalLengthField.getText()));
+        else
+            dialogWindow("Focal length", "MUST BE A NUMBER!");
+    }
+
+    public void startShowingDistance() {
+        if (distanceThread == null && grabbers[0] != null && grabbers[1] != null) {
+            distanceThread = new DistanceThread(this);
+            distanceShow = new Thread(distanceThread);
+            distanceShow.start();
+            startShowDistanceButton.setText("Stop show distance");
+        } else if (distanceShow != null && distanceThread != null) {
+            distanceThread.setWork(false);
+            distanceShow = null;
+            distanceThread = null;
+            startShowDistanceButton.setText("Start showing distance");
+        }
+    }
+
+    public void showDistance(double distance) {
+        lblDistance1.setText(String.valueOf(distance));
+        lblDistance2.setText(String.valueOf(distance));
+        lblDistance3.setText(String.valueOf(distance));
+    }
 
 }

@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.image.Image;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.imgproc.Moments;
 import org.opencv.videoio.VideoCapture;
 
 import java.util.ArrayList;
@@ -21,6 +22,11 @@ public class FrameGrabber implements Runnable {
     private MainWindowController mwc;
     private boolean cameraActive = false;
 
+    private int centerOfObject[];
+
+    public int[] getCenterOfObject() {
+        return centerOfObject;
+    }
 
     public FrameGrabber(byte cameraId, byte whichImageView, MainWindowController mwc) {
         this.cameraId = cameraId;
@@ -28,6 +34,7 @@ public class FrameGrabber implements Runnable {
         this.mwc = mwc;
     }
 
+    //update ImageView
     public void toWindow(Image imageToShow) {
         Platform.runLater(new Runnable() {
             @Override
@@ -37,6 +44,7 @@ public class FrameGrabber implements Runnable {
         });
     }
 
+    //change Button Text
     public void toWindow(String text) {
         Platform.runLater(new Runnable() {
             @Override
@@ -46,6 +54,7 @@ public class FrameGrabber implements Runnable {
         });
     }
 
+    //message to Dialog Window
     public void toWindow(String cause, String message) {
         Platform.runLater(new Runnable() {
             @Override
@@ -55,6 +64,7 @@ public class FrameGrabber implements Runnable {
         });
     }
 
+    //update imageView in Mode 2
     public void toWindow(String cam, Image imageToShow) {
         Platform.runLater(new Runnable() {
             @Override
@@ -96,47 +106,6 @@ public class FrameGrabber implements Runnable {
         }
     }
 
-    public void changeCamera() {
-        init();
-        if (testOnConnectionNextCamera())
-            cameraId++;
-        else
-            cameraId = 0;
-
-        if (whichImageView == 0)
-            mwc.setCamerasID(new byte[]{cameraId, mwc.getCamerasID()[1]});
-        else if (whichImageView == 1)
-            mwc.setCamerasID(new byte[]{mwc.getCamerasID()[0], cameraId});
-
-        init();
-    }
-
-    public boolean testOnConnectionNextCamera() {
-        int move = 1;
-        boolean isEnabled = false;
-
-        for (int i = 0; i < mwc.getCamerasID().length; i++)
-            if (mwc.getCamerasID()[i] == cameraId &&
-                    mwc.getCamerasIsOnline()[i] == true)
-                isEnabled = true;
-
-        System.out.println(isEnabled);
-
-        boolean result;
-        VideoCapture captureTest = new VideoCapture();
-        captureTest.open((cameraId + move));
-
-        if (captureTest.isOpened())
-            result = true;
-        else
-            result = false;
-
-        if (captureTest.isOpened() && !isEnabled)
-            captureTest.release();
-
-        return result;
-    }
-
     @Override
     public void run() {
 
@@ -174,6 +143,7 @@ public class FrameGrabber implements Runnable {
                     Mat hsvImage = new Mat();
                     Mat mask = new Mat();
                     Mat morphOutput = new Mat();
+
 
                     // remove some noise
                     Imgproc.blur(frame, blurredImage, new Size(5, 5));
@@ -217,6 +187,20 @@ public class FrameGrabber implements Runnable {
 
                     // find the objects contours and show them
                     frame = this.findAndDrawContours(morphOutput, frame);
+
+                    Moments moments = Imgproc.moments(mask);
+                    int centerX = (int) (moments.m10 / moments.m00);
+                    int centerY = (int) (moments.m01 / moments.m00);
+
+                    //System.out.println(centerX+" "+centerY);
+
+                    centerOfObject = new int[]{centerX, centerY};
+
+                    Imgproc.circle(frame, new Point(centerX, centerY), 7,
+                            new Scalar(255, 255, 255), -1);
+
+                    Imgproc.putText(frame, "Center", new Point(centerX - 20, centerY - 20),
+                            Core.FONT_HERSHEY_COMPLEX, 0.5, new Scalar(255, 255, 255), 2);
 
                 }
 
