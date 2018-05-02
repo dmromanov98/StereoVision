@@ -15,10 +15,15 @@ public class MainWIndow extends Application {
     private Stage primaryStage;
     private StackPane rootLayout;
 
+    private static MainWindowController mwc;
 
     public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         launch(args);
+    }
+
+    public static void setMwc(MainWindowController mwc) {
+        MainWIndow.mwc = mwc;
     }
 
     @Override
@@ -37,9 +42,15 @@ public class MainWIndow extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-//            primaryStage.setOnCloseRequest(we -> {
-//                MainWindowController.
-//            });
+            primaryStage.setOnCloseRequest(we -> {
+                System.out.println(mwc.getGrabbers()[0]+" "+mwc.getGrabbers()[1]);
+
+                if(mwc.getGrabbers()[0] != null)
+                    mwc.startFirstCamera();
+
+                if(mwc.getGrabbers()[1] != null)
+                    mwc.startSecondCamera();
+            });
 
         } catch (IOException e) {
             e.printStackTrace();

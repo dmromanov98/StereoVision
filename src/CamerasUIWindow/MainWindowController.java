@@ -1,6 +1,7 @@
 package CamerasUIWindow;
 
 import com.jfoenix.controls.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -76,11 +77,21 @@ public class MainWindowController implements Initializable {
     @FXML
     private JFXButton startShowDistanceButton;
 
+    @FXML
+    private JFXCheckBox checkBoxAlgorithmOne;
+
+    @FXML
+    private JFXCheckBox checkBoxAlgorithmTwo;
+
     private DistanceThread distanceThread;
     private Thread distanceShow;
+
     protected static FrameGrabber[] grabbers;
     private static byte[] camerasID;
 
+    public static FrameGrabber[] getGrabbers() {
+        return grabbers;
+    }
 
     public JFXSlider getScrollHueStart() {
         return scrollHueStart;
@@ -195,6 +206,8 @@ public class MainWindowController implements Initializable {
         distanceBetweenCamerasField.setText(String.valueOf(DistanceToTheObject.getDistanceBetweenCameras()));
         focalLengthField.setText(String.valueOf(DistanceToTheObject.getFocus()));
 
+        MainWIndow.setMwc(this);
+
     }
 
     public void mode2ImageShow(String cam, Image image) {
@@ -264,4 +277,15 @@ public class MainWindowController implements Initializable {
         lblDistance3.setText(String.valueOf(distance));
     }
 
+    public void selectCheckBoxOne() {
+        DistanceThread.setMethod((byte) 1);
+        checkBoxAlgorithmOne.setSelected(true);
+        checkBoxAlgorithmTwo.setSelected(false);
+    }
+
+    public void selectCheckBoxTwo() {
+        DistanceThread.setMethod((byte) 2);
+        checkBoxAlgorithmOne.setSelected(false);
+        checkBoxAlgorithmTwo.setSelected(true);
+    }
 }

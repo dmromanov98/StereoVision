@@ -75,4 +75,43 @@ public class DistanceToTheObject {
 
         return s;
     }
+
+
+    public static double getDistanceByMethodTwo(FrameGrabber[] grabbers){
+        dx1 = Math.abs(centerOfImages[0] - grabbers[0].getCenterOfObject()[0]);
+        dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
+
+        double dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
+        double dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
+
+        double dy = (dy1 + dy2) / 2;
+
+        System.out.println("dy = " + dy);
+
+        double alphay = dy / 319 * 26.5;
+
+        System.out.println("alpha y = " + alphay);
+
+
+        double alpha = dx1 / 319 * 26.5;
+        double beta = dx2 / 319 * 26.5;
+
+        double alphahatch = 90 - alpha;
+        double betahatch = 90 - beta;
+        double teta = 180 - alphahatch - betahatch;
+
+
+        double b = (distanceBetweenCameras / Math.sin(Math.toRadians(teta))) * Math.sin(Math.toRadians(betahatch))
+                / Math.cos(Math.toRadians(alphay));
+        double c = (distanceBetweenCameras / Math.sin(Math.toRadians(teta))) * Math.sin(Math.toRadians(alphahatch))
+                / Math.cos(Math.toRadians(alphay));
+
+        System.out.println(alphay);
+
+        double s = 0.5 * Math.sqrt(2 * b * b + 2 * c * c - distanceBetweenCameras * distanceBetweenCameras);
+
+        return s;
+    }
+
+
 }

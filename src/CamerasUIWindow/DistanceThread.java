@@ -7,6 +7,12 @@ public class DistanceThread implements Runnable {
     private MainWindowController mwc;
     private boolean work = true;
 
+    public static void setMethod(byte method) {
+        DistanceThread.method = method;
+    }
+
+    private static byte method = 1;
+
     public DistanceThread(MainWindowController mwc) {
         this.mwc = mwc;
     }
@@ -22,7 +28,12 @@ public class DistanceThread implements Runnable {
     @Override
     public void run() {
         while (work) {
-            toWindow(DistanceToTheObject.getDistanceByMethodOne(mwc.grabbers));
+
+            if (method == 1)
+                toWindow(DistanceToTheObject.getDistanceByMethodOne(mwc.grabbers));
+            if (method == 2)
+                toWindow(DistanceToTheObject.getDistanceByMethodTwo(mwc.grabbers));
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

@@ -78,6 +78,8 @@ public class FrameGrabber implements Runnable {
         if (!this.cameraActive) {
             capture = new VideoCapture();
             this.capture.open(cameraId);
+
+
             if (this.capture.isOpened()) {
 
                 this.cameraActive = true;
@@ -92,7 +94,7 @@ public class FrameGrabber implements Runnable {
 
             } else {
 
-                toWindow("", "Impossible to open the camera connection... with ID = ");
+                toWindow("", "Impossible to open the camera connection... with ID = " +cameraId);
             }
 
         } else { // if camera isnt active

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXColorPicker?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTabPane?>
@@ -148,14 +149,16 @@
                                     </font>
                                 </Label>
                                 <JFXButton fx:id="startShowDistanceButton" layoutX="14.0" layoutY="142.0"
-                                           onAction="#startShowingDistance"
-                                           prefHeight="68.0" prefWidth="148.0" style="-fx-background-color: #3797ff;"
-                                           text="Start showing distance" textAlignment="CENTER" textFill="WHITE"
-                                           wrapText="true">
+                                           onAction="#startShowingDistance" prefHeight="68.0" prefWidth="148.0"
+                                           style="-fx-background-color: #3797ff;" text="Start showing distance"
+                                           textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
                                         <Font size="18.0"/>
                                     </font>
                                 </JFXButton>
+                                <JFXCheckBox fx:id="checkBoxAlgorithmOne" onAction="#selectCheckBoxOne" checkedColor="#3797ff" layoutX="237.0" layoutY="142.0" selected="true"
+                                             text="Algorithm 1"/>
+                                <JFXCheckBox fx:id="checkBoxAlgorithmTwo" onAction="#selectCheckBoxTwo" checkedColor="#3797ff" layoutX="237.0" layoutY="176.0" text="Algorithm 2"/>
                             </children>
                         </AnchorPane>
                     </content>
