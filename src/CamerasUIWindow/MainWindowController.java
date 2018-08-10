@@ -1,7 +1,6 @@
 package CamerasUIWindow;
 
 import com.jfoenix.controls.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -30,6 +29,7 @@ public class MainWindowController implements Initializable {
     private JFXButton buttonTwo; //id = 1
     @FXML
     private StackPane stackPane;
+
 
     @FXML
     private JFXSlider scrollHueStart;
@@ -86,8 +86,10 @@ public class MainWindowController implements Initializable {
     private DistanceThread distanceThread;
     private Thread distanceShow;
 
+
     protected static FrameGrabber[] grabbers;
     private static byte[] camerasID;
+
 
     public static FrameGrabber[] getGrabbers() {
         return grabbers;
@@ -160,7 +162,9 @@ public class MainWindowController implements Initializable {
         btn.setOnAction(event -> dialog.close());
         content.setActions(btn);
         dialog.show();
+        System.out.println("Here11");
     }
+
 
     @FXML
     public void startSecondCamera() {
@@ -194,6 +198,7 @@ public class MainWindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         grabbers = new FrameGrabber[2];
         camerasID = new byte[]{0, 1};
         scrollHueStart.setValue(0);
