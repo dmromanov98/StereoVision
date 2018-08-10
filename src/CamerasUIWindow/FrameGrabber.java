@@ -16,10 +16,14 @@ import java.util.concurrent.TimeUnit;
 public class FrameGrabber implements Runnable {
 
     private VideoCapture capture;
+
     private ScheduledExecutorService timer;
+
     private byte cameraId;
     private byte whichImageView;
+
     private MainWindowController mwc;
+
     private boolean cameraActive = false;
 
     private int centerOfObject[];
@@ -75,10 +79,10 @@ public class FrameGrabber implements Runnable {
     }
 
     public void init() {
+
         if (!this.cameraActive) {
             capture = new VideoCapture();
             this.capture.open(cameraId);
-
 
             if (this.capture.isOpened()) {
 
@@ -95,12 +99,15 @@ public class FrameGrabber implements Runnable {
             } else {
 
                 toWindow("", "Impossible to open the camera connection... with ID = " +cameraId);
+
             }
 
-        } else { // if camera isnt active
+        } else { // if camera is active
 
             this.cameraActive = false;
+
             //Thread.currentThread().interrupt();
+
             toWindow("Start camera " + (whichImageView + 1));
 
             // stop the timer

@@ -60,6 +60,8 @@ public class MainWIndow extends Application {
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(we -> {
+
+            //TODO: IDK FOR WHAT IT
             System.out.println(mwc.getGrabbers()[0] + " " + mwc.getGrabbers()[1]);
 
             if (mwc.getGrabbers()[0] != null)

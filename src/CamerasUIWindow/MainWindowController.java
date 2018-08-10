@@ -119,14 +119,6 @@ public class MainWindowController implements Initializable {
         return scrollValueStop;
     }
 
-    public static byte[] getCamerasID() {
-        return camerasID;
-    }
-
-    public static void setCamerasID(byte[] camerasID) {
-        MainWindowController.camerasID = camerasID;
-    }
-
     public void changeButtonText(String text, Byte buttonId) {
 
         if (buttonId == 0)
@@ -150,7 +142,7 @@ public class MainWindowController implements Initializable {
 
     }
 
-    //инициализация окна Dialog
+    //init dialog window for messages
     public void dialogWindow(String cause, String message) {
         JFXDialogLayout content = new JFXDialogLayout();
         Text txt = new Text(cause);
@@ -201,10 +193,13 @@ public class MainWindowController implements Initializable {
 
         grabbers = new FrameGrabber[2];
         camerasID = new byte[]{0, 1};
+
         scrollHueStart.setValue(0);
         scrollHueStop.setValue(180);
+
         scrollSaturationStart.setValue(0);
         scrollSaturationStop.setValue(255);
+
         scrollValueStart.setValue(0);
         scrollValueStop.setValue(255);
 
