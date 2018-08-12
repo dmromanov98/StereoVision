@@ -1,8 +1,5 @@
 package CamerasUIWindow;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,10 +8,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
-import javax.swing.*;
 import java.io.IOException;
 
-public class MainWIndow extends Application {
+public class MainWindow extends Application {
 
 
     private Stage primaryStage;
@@ -32,7 +28,7 @@ public class MainWIndow extends Application {
     }
 
     public static void setMwc(MainWindowController mwc) {
-        MainWIndow.mwc = mwc;
+        MainWindow.mwc = mwc;
     }
 
     @Override
@@ -47,7 +43,7 @@ public class MainWIndow extends Application {
 
     public void initWindow() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(MainWIndow.class.getResource("MainWindow.fxml"));
+        loader.setLocation(MainWindow.class.getResource("MainWindow.fxml"));
 
         try {
             rootLayout = loader.load();
@@ -63,7 +59,7 @@ public class MainWIndow extends Application {
         primaryStage.setOnCloseRequest(we -> {
 
             //TODO: IDK FOR WHAT IT
-            System.out.println(mwc.getGrabbers()[0] + " " + mwc.getGrabbers()[1]);
+            //System.out.println(mwc.getGrabbers()[0] + " " + mwc.getGrabbers()[1]);
 
             if (mwc.getGrabbers()[0] != null)
                 mwc.startFirstCamera();
@@ -71,9 +67,5 @@ public class MainWIndow extends Application {
             if (mwc.getGrabbers()[1] != null)
                 mwc.startSecondCamera();
         });
-
-
     }
-
-
 }

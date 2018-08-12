@@ -1,6 +1,7 @@
 package CamerasUIWindow;
 
 import com.jfoenix.controls.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.videoio.VideoCapture;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -74,6 +76,9 @@ public class MainWindowController implements Initializable {
     private ImageView mode2Camera21;
     @FXML
     private ImageView mode2Camera22;
+
+    @FXML
+    private JFXTextField staffUpdatePeriodField;
 
     @FXML
     private JFXColorPicker colorPicker;
@@ -176,7 +181,7 @@ public class MainWindowController implements Initializable {
         btn.setOnAction(event -> dialog.close());
         content.setActions(btn);
         dialog.show();
-        System.out.println("Here11");
+        //System.out.println("Here11");
     }
 
 
@@ -203,7 +208,52 @@ public class MainWindowController implements Initializable {
     }
 
     public void changeFirstCamera() {
+        if (grabbers[0] != null) {
+            if (camerasID[0] != camerasID[1]) {
 
+                startFirstCamera();
+                camerasID[0] = (byte) (camerasID[0] + 1);
+                startFirstCamera();
+
+                if (!grabbers[0].getCapture().isOpened()) {
+                    camerasID[0] = (byte) 0;
+                    if(camerasID[1] != 0 && grabbers[1] != null) {
+                        startFirstCamera();
+                        startFirstCamera();
+                    }else if (grabbers[1] != null){
+                        startSecondCamera();
+                        startFirstCamera();
+                        startSecondCamera();
+                        startFirstCamera();
+                    }
+                }
+
+            } else {
+                camerasID[0] = (byte) (camerasID[0] + 1);
+                if (grabbers[1] != null) {
+                    startSecondCamera();
+                    startFirstCamera();
+                    startSecondCamera();
+                    startFirstCamera();
+
+                    if (!grabbers[0].getCapture().isOpened()) {
+                        camerasID[0] = (byte) 0;
+                        startFirstCamera();
+                        startFirstCamera();
+                    }
+
+                } else {
+                    startFirstCamera();
+                    startFirstCamera();
+                    if (!grabbers[0].getCapture().isOpened()) {
+                        camerasID[0] = (byte) 0;
+                        startFirstCamera();
+                        startFirstCamera();
+                    }
+                }
+            }
+        }
+        //System.out.println(capture.isOpened());
     }
 
     public void changeSecondCamera() {
@@ -234,13 +284,9 @@ public class MainWindowController implements Initializable {
         distanceBetweenCamerasField.setText(String.valueOf(DistanceToTheObject.getDistanceBetweenCameras()));
         focalLengthField.setText(String.valueOf(DistanceToTheObject.getFocus()));
 
-        //comboBox = new JFXComboBox();
+        staffUpdatePeriodField.setText("33");
 
-
-
-
-
-        MainWIndow.setMwc(this);
+        MainWindow.setMwc(this);
 
     }
 
@@ -264,7 +310,7 @@ public class MainWindowController implements Initializable {
         Imgproc.cvtColor(mat, hsv, Imgproc.COLOR_BGR2HSV);
         double[] hcvValues = hsv.get(0, 0);
 
-        System.out.println(mat.dump() + "\n" + hsv.dump());
+        //System.out.println(mat.dump() + "\n" + hsv.dump());
 
         scrollHueStart.setValue(hcvValues[0]);
         scrollHueStop.setValue((int) hcvValues[0] * 4.8);
@@ -324,24 +370,42 @@ public class MainWindowController implements Initializable {
     }
 
     public void setVideoQuality() {
-        System.out.println(qualityComboBox.getSelectionModel().selectedItemProperty());
-        if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("480p")){
+        //System.out.println(qualityComboBox.getSelectionModel().selectedItemProperty());
+
+        if (qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("480p")) {
             widthOfVideo = 640;
             heightOfVideo = 480;
-            System.out.println("here 3");
-        } else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("360p")){
+        } else if (qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("360p")) {
             widthOfVideo = 480;
             heightOfVideo = 360;
-            System.out.println("here 1");
-        } else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("240p")){
+        } else if (qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("240p")) {
             widthOfVideo = 352;
             heightOfVideo = 240;
-            System.out.println("here");
-        }
-        else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("144p")){
+        } else if (qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("144p")) {
             widthOfVideo = 256;
             heightOfVideo = 144;
-            System.out.println("here 4");
+        }
+    }
+
+    public void serStaffUpdatePeriod() {
+        if (Test.testOnNumber(staffUpdatePeriodField.getText())) {
+
+            if (grabbers[0] != null) {
+                grabbers[0].init();
+                grabbers[0] = null;
+                grabbers[0] = new FrameGrabber(camerasID[0], (byte) 0, this, Integer.valueOf(staffUpdatePeriodField.getText()));
+                grabbers[0].init();
+            }
+
+            if (grabbers[1] != null) {
+                grabbers[1].init();
+                grabbers[1] = null;
+                grabbers[1] = new FrameGrabber(camerasID[1], (byte) 1, this, Integer.valueOf(staffUpdatePeriodField.getText()));
+                grabbers[1].init();
+            }
+
+        } else {
+            dialogWindow("Error", "Staff update period(FPS) must be a NUMBER!");
         }
     }
 }

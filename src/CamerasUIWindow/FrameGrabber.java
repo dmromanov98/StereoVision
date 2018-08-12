@@ -17,9 +17,15 @@ import java.util.concurrent.TimeUnit;
 
 public class FrameGrabber implements Runnable {
 
+    public VideoCapture getCapture() {
+        return capture;
+    }
+
     private VideoCapture capture;
 
     private ScheduledExecutorService timer;
+
+    private int staffUpdatePeriod = 33;
 
     private byte cameraId;
     private byte whichImageView;
@@ -40,6 +46,13 @@ public class FrameGrabber implements Runnable {
         this.cameraId = cameraId;
         this.whichImageView = whichImageView;
         this.mwc = mwc;
+    }
+
+    public FrameGrabber(byte cameraId, byte whichImageView, MainWindowController mwc,int staffUpdatePeriod) {
+        this.cameraId = cameraId;
+        this.whichImageView = whichImageView;
+        this.mwc = mwc;
+        this.staffUpdatePeriod = staffUpdatePeriod;
     }
 
     //update ImageView
@@ -96,7 +109,7 @@ public class FrameGrabber implements Runnable {
 
                 //timer, every 33msc image will update
                 this.timer = Executors.newSingleThreadScheduledExecutor();
-                this.timer.scheduleAtFixedRate(this, 0, 1, TimeUnit.MILLISECONDS);
+                this.timer.scheduleAtFixedRate(this, 0, staffUpdatePeriod, TimeUnit.MILLISECONDS);
 
                 toWindow("Stop camera " + (whichImageView + 1));
 
@@ -174,7 +187,8 @@ public class FrameGrabber implements Runnable {
                     // remove some noise
                     Imgproc.blur(frame, blurredImage, new Size(5, 5));
 
-                    System.out.println(blurredImage.height()+" "+blurredImage.width());
+                    //System.out.println(blurredImage.height()+" "+blurredImage.width());
+
                     // convert the frame to HSV
                     Imgproc.cvtColor(blurredImage, hsvImage, Imgproc.COLOR_BGR2HSV);
 
@@ -233,8 +247,7 @@ public class FrameGrabber implements Runnable {
 
             } catch (Exception e) {
                 // log the (full) error
-                System.err.print("Exception during the image elaboration...");
-                e.printStackTrace();
+                toWindow("Error","Exception during the image elaboration... "+e.getMessage());
             }
         }
 
