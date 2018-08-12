@@ -7,9 +7,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
+import javax.swing.*;
 import java.io.IOException;
 
-public class Main extends Application  {
+public class Main extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
 
@@ -27,18 +28,20 @@ public class Main extends Application  {
     }
 
     public void initWindow() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("CompareImages.fxml"));
+
         try {
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("CompareImages.fxml"));
             rootLayout = loader.load();
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
+
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+
     }
 
 }

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -128,7 +129,8 @@
                             <children>
                                 <JFXTextField fx:id="distanceBetweenCamerasField" focusColor="#0040ff" labelFloat="true"
                                               layoutX="14.0" layoutY="32.0" prefHeight="25.0" prefWidth="189.0"
-                                              promptText="Distance between cameras (cm):" unFocusColor="#05b9ff"/>
+                                              promptText="Distance between cameras (cm):" unFocusColor="#05b9ff"
+                                              AnchorPane.leftAnchor="15.0"/>
                                 <JFXButton layoutX="237.0" layoutY="77.0" onAction="#setFocalLength"
                                            style="-fx-background-color: #3797ff;" text="Set this value"
                                            textFill="WHITE"/>
@@ -137,7 +139,8 @@
                                            textFill="WHITE"/>
                                 <JFXTextField fx:id="focalLengthField" focusColor="#0040ff" labelFloat="true"
                                               layoutX="14.0" layoutY="77.0" prefHeight="25.0" prefWidth="189.0"
-                                              promptText="Focal length" unFocusColor="#05b9ff"/>
+                                              promptText="Focal length" unFocusColor="#05b9ff"
+                                              AnchorPane.leftAnchor="15.0"/>
                                 <Label layoutX="18.0" layoutY="724.0" text="Distance to object = ">
                                     <font>
                                         <Font name="Arial" size="24.0"/>
@@ -151,14 +154,24 @@
                                 <JFXButton fx:id="startShowDistanceButton" layoutX="14.0" layoutY="142.0"
                                            onAction="#startShowingDistance" prefHeight="68.0" prefWidth="148.0"
                                            style="-fx-background-color: #3797ff;" text="Start showing distance"
-                                           textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                           textAlignment="CENTER" textFill="WHITE" wrapText="true"
+                                           AnchorPane.leftAnchor="15.0">
                                     <font>
                                         <Font size="18.0"/>
                                     </font>
                                 </JFXButton>
-                                <JFXCheckBox fx:id="checkBoxAlgorithmOne" onAction="#selectCheckBoxOne" checkedColor="#3797ff" layoutX="237.0" layoutY="142.0" selected="true"
+                                <JFXCheckBox fx:id="checkBoxAlgorithmOne" checkedColor="#3797ff" layoutX="237.0"
+                                             layoutY="142.0" onAction="#selectCheckBoxOne" selected="true"
                                              text="Algorithm 1"/>
-                                <JFXCheckBox fx:id="checkBoxAlgorithmTwo" onAction="#selectCheckBoxTwo" checkedColor="#3797ff" layoutX="237.0" layoutY="176.0" text="Algorithm 2"/>
+                                <JFXCheckBox fx:id="checkBoxAlgorithmTwo" checkedColor="#3797ff" layoutX="237.0"
+                                             layoutY="176.0" onAction="#selectCheckBoxTwo" text="Algorithm 2"/>
+                                <JFXComboBox fx:id="qualityComboBox" layoutX="110.0" layoutY="231.0" prefHeight="25.0"
+                                             prefWidth="78.0" AnchorPane.leftAnchor="110.0"/>
+                                <Label layoutX="14.0" layoutY="235.0" text="Quality of video:"
+                                       AnchorPane.leftAnchor="15.0"/>
+                                <JFXButton layoutX="204.0" layoutY="231.0" onAction="#setVideoQuality"
+                                           style="-fx-background-color: #3797ff;" text="Set this qualuty"
+                                           textFill="WHITE"/>
                             </children>
                         </AnchorPane>
                     </content>

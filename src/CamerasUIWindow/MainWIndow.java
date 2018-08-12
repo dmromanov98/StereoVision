@@ -52,6 +52,7 @@ public class MainWIndow extends Application {
         try {
             rootLayout = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             System.exit(10);
         }
 

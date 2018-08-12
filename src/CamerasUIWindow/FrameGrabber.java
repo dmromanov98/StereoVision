@@ -1,8 +1,10 @@
 package CamerasUIWindow;
 
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import org.opencv.core.*;
+import org.opencv.core.Point;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
 import org.opencv.videoio.VideoCapture;
@@ -27,6 +29,8 @@ public class FrameGrabber implements Runnable {
     private boolean cameraActive = false;
 
     private int centerOfObject[];
+
+
 
     public int[] getCenterOfObject() {
         return centerOfObject;
@@ -92,7 +96,7 @@ public class FrameGrabber implements Runnable {
 
                 //timer, every 33msc image will update
                 this.timer = Executors.newSingleThreadScheduledExecutor();
-                this.timer.scheduleAtFixedRate(this, 0, 33, TimeUnit.MILLISECONDS);
+                this.timer.scheduleAtFixedRate(this, 0, 1, TimeUnit.MILLISECONDS);
 
                 toWindow("Stop camera " + (whichImageView + 1));
 
@@ -124,9 +128,16 @@ public class FrameGrabber implements Runnable {
         //convert mat object to JavaFxImage
         Image imageToShow = Utils.mat2Image(frame);
 
+
+        //System.out.println(nImage.getHeight()+" "+nImage.getWidth());
         //imageView camera updating to imageToShow
         toWindow(imageToShow);
 
+    }
+
+    private Image getScaledImage(Image im, int w, int h) {
+
+      return null;
     }
 
     static public Mat getMorph() {
@@ -147,6 +158,12 @@ public class FrameGrabber implements Runnable {
 
                 // if the frame is not empty, process it
                 if (!frame.empty()) {
+
+                    Image imageToShow = Utils.mat2Image(frame);
+                    Image nImage = Utils.getScaledImage(imageToShow,mwc.getWidthOfVideo(),mwc.getHeightOfVideo());
+
+                    frame = Utils.bufferedImage2Mat_v2(SwingFXUtils.fromFXImage(nImage, null));
+
                     // init
                     Mat blurredImage = new Mat();
                     Mat hsvImage = new Mat();
@@ -157,6 +174,7 @@ public class FrameGrabber implements Runnable {
                     // remove some noise
                     Imgproc.blur(frame, blurredImage, new Size(5, 5));
 
+                    System.out.println(blurredImage.height()+" "+blurredImage.width());
                     // convert the frame to HSV
                     Imgproc.cvtColor(blurredImage, hsvImage, Imgproc.COLOR_BGR2HSV);
 

@@ -18,6 +18,26 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
+    private int widthOfVideo = 640;
+
+    public int getWidthOfVideo() {
+        return widthOfVideo;
+    }
+
+    public void setWidthOfVideo(int widthOfVideo) {
+        this.widthOfVideo = widthOfVideo;
+    }
+
+    public int getHeightOfVideo() {
+        return heightOfVideo;
+    }
+
+    public void setHeightOfVideo(int heightOfVideo) {
+        this.heightOfVideo = heightOfVideo;
+    }
+
+    private int heightOfVideo = 480;
+
     @FXML
     private ImageView cameraOne; //id = 0
     @FXML
@@ -29,7 +49,6 @@ public class MainWindowController implements Initializable {
     private JFXButton buttonTwo; //id = 1
     @FXML
     private StackPane stackPane;
-
 
     @FXML
     private JFXSlider scrollHueStart;
@@ -82,6 +101,9 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private JFXCheckBox checkBoxAlgorithmTwo;
+
+    @FXML
+    private JFXComboBox<String> qualityComboBox;
 
     private DistanceThread distanceThread;
     private Thread distanceShow;
@@ -191,6 +213,12 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        qualityComboBox.getItems().add("480p");
+        qualityComboBox.getItems().add("360p");
+        qualityComboBox.getItems().add("240p");
+        qualityComboBox.getItems().add("144p");
+        qualityComboBox.setPromptText("480p");
+
         grabbers = new FrameGrabber[2];
         camerasID = new byte[]{0, 1};
 
@@ -205,6 +233,12 @@ public class MainWindowController implements Initializable {
 
         distanceBetweenCamerasField.setText(String.valueOf(DistanceToTheObject.getDistanceBetweenCameras()));
         focalLengthField.setText(String.valueOf(DistanceToTheObject.getFocus()));
+
+        //comboBox = new JFXComboBox();
+
+
+
+
 
         MainWIndow.setMwc(this);
 
@@ -287,5 +321,27 @@ public class MainWindowController implements Initializable {
         DistanceThread.setMethod((byte) 2);
         checkBoxAlgorithmOne.setSelected(false);
         checkBoxAlgorithmTwo.setSelected(true);
+    }
+
+    public void setVideoQuality() {
+        System.out.println(qualityComboBox.getSelectionModel().selectedItemProperty());
+        if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("480p")){
+            widthOfVideo = 640;
+            heightOfVideo = 480;
+            System.out.println("here 3");
+        } else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("360p")){
+            widthOfVideo = 480;
+            heightOfVideo = 360;
+            System.out.println("here 1");
+        } else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("240p")){
+            widthOfVideo = 352;
+            heightOfVideo = 240;
+            System.out.println("here");
+        }
+        else if(qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("144p")){
+            widthOfVideo = 256;
+            heightOfVideo = 144;
+            System.out.println("here 4");
+        }
     }
 }
