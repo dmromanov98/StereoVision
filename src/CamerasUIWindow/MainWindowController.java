@@ -113,6 +113,13 @@ public class MainWindowController implements Initializable {
     private DistanceThread distanceThread;
     private Thread distanceShow;
 
+    public boolean isOpenedFromChange() {
+        return openedFromChange;
+    }
+
+    private boolean openedFromChange = false;
+
+
 
     protected static FrameGrabber[] grabbers;
     private static byte[] camerasID;
@@ -166,7 +173,6 @@ public class MainWindowController implements Initializable {
             grabbers[0].init();
             grabbers[0] = null;
         }
-
     }
 
     //init dialog window for messages
@@ -196,7 +202,6 @@ public class MainWindowController implements Initializable {
             grabbers[1].init();
             grabbers[1] = null;
         }
-
     }
 
 
@@ -208,6 +213,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void changeFirstCamera() {
+        openedFromChange = true;
         if (grabbers[0] != null) {
             if (camerasID[0] != camerasID[1]) {
 
@@ -253,11 +259,65 @@ public class MainWindowController implements Initializable {
                 }
             }
         }
+        openedFromChange = false;
         //System.out.println(capture.isOpened());
     }
 
     public void changeSecondCamera() {
+        openedFromChange = true;
+        if (grabbers[1] != null) {
+            if (camerasID[0] != camerasID[1]) {
 
+                startSecondCamera();
+                camerasID[1] = (byte) (camerasID[1] + 1);
+                startSecondCamera();
+
+                System.out.println("here 1");
+
+                if (!grabbers[1].getCapture().isOpened()) {
+                    camerasID[1] = (byte) 0;
+                    if(camerasID[0] != 0 && grabbers[0] != null) {
+                        startSecondCamera();
+                        startSecondCamera();
+                        System.out.println("here 2");
+                    }else if (grabbers[0] != null){
+                        startFirstCamera();
+                        startSecondCamera();
+                        startFirstCamera();
+                        startSecondCamera();
+                        System.out.println("here 3");
+                    }
+                }
+
+            } else {
+                camerasID[1] = (byte) (camerasID[1] + 1);
+                if (grabbers[0] != null) {
+                    startFirstCamera();
+                    startSecondCamera();
+                    startFirstCamera();
+                    startSecondCamera();
+                    System.out.println("here 4");
+                    if (!grabbers[1].getCapture().isOpened()) {
+                        camerasID[1] = (byte) 0;
+                        startSecondCamera();
+                        startSecondCamera();
+                        System.out.println("here 5");
+                    }
+
+                } else {
+                    startSecondCamera();
+                    startSecondCamera();
+                    System.out.println("here 6");
+                    if (!grabbers[1].getCapture().isOpened()) {
+                        camerasID[1] = (byte) 0;
+                        startSecondCamera();
+                        startSecondCamera();
+                        System.out.println("here 7");
+                    }
+                }
+            }
+        }
+        openedFromChange = false;
     }
 
     @Override
@@ -338,7 +398,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void startShowingDistance() {
-        if (distanceThread == null && grabbers[0] != null && grabbers[1] != null) {
+        if (distanceThread == null && grabbers[0] != null && grabbers[1] != null && !openedFromChange) {
             distanceThread = new DistanceThread(this);
             distanceShow = new Thread(distanceThread);
             distanceShow.start();
@@ -385,6 +445,7 @@ public class MainWindowController implements Initializable {
             widthOfVideo = 256;
             heightOfVideo = 144;
         }
+        DistanceToTheObject.setCenterOfImages(new double[]{Double.valueOf(widthOfVideo/2)-1, Double.valueOf(heightOfVideo/2)-1});
     }
 
     public void serStaffUpdatePeriod() {

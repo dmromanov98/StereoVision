@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e5ae99b-45f7-40d1-83b7-b5859f00b03e" name="Default" comment="Distance Measurement">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jzy3d_javafx_1_0_3_20180318_152746_1_javadoc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/jzy3d-javafx-1.0.3-20180318.152746-1-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ChartUI/ChartUIConroller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ChartUI/ChartUi.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StereoVision.iml" beforeDir="false" afterPath="$PROJECT_DIR$/StereoVision.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/DistanceToTheObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/DistanceToTheObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWIndow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWIndow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/MainWIndow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,31 +77,36 @@
     <session id="-129522677">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="910" />
+          <entry key="fxml" value="4" />
+          <entry key="java" value="1691" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="910" />
+          <entry key="JAVA" value="1691" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="7" />
+          <entry key="fxml" value="1" />
+          <entry key="java" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="7" />
+          <entry key="JAVA" value="11" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -111,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="107">
+              <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,22 +129,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="251" column="21" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="66">
+              <caret line="67" column="71" selection-start-line="67" selection-start-column="71" selection-end-line="67" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -144,39 +140,67 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
+            <state relative-caret-position="1154">
+              <caret line="236" selection-start-line="236" selection-end-line="236" />
               <folding>
                 <element signature="e#571#572#0" expanded="true" />
                 <element signature="e#601#602#0" expanded="true" />
-                <element signature="e#1676#1677#0" expanded="true" />
-                <element signature="e#1756#1757#0" expanded="true" />
-                <element signature="e#1937#1938#0" expanded="true" />
-                <element signature="e#2011#2012#0" expanded="true" />
-                <element signature="e#2215#2216#0" expanded="true" />
-                <element signature="e#2279#2280#0" expanded="true" />
-                <element signature="e#2486#2487#0" expanded="true" />
-                <element signature="e#2554#2555#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#979#980#0" expanded="true" />
+                <element signature="e#4514#4515#0" expanded="true" />
+                <element signature="e#4542#4543#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml">
+        <entry file="file://$PROJECT_DIR$/src/ChartUI/ChartUi.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="174" column="75" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="75" />
+            <state relative-caret-position="220">
+              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ChartUI/ChartUIConroller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="436" column="32" selection-start-line="436" selection-start-column="32" selection-end-line="436" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2488#2489#0" expanded="true" />
+                <element signature="e#2527#2528#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/DistanceThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            <state relative-caret-position="154">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -186,6 +210,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -194,6 +219,8 @@
     <findStrings>
       <find>system</find>
       <find>System</find>
+      <find>openedFromChange</find>
+      <find>startShowingDistance</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,12 +231,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/Test.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/DistanceThread.java" />
-        <option value="$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWIndow.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java" />
+        <option value="$PROJECT_DIR$/src/ChartUI/ChartUi.fxml" />
       </list>
     </option>
   </component>
@@ -236,6 +264,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,7 +287,7 @@
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
               <item name="StereoVision" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="CamerasUIWindow" type="462c0819:PsiDirectoryNode" />
+              <item name="ChartUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
@@ -269,146 +299,24 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ToolWindowEvent Log.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534100999974" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534169057263" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/jzy3d-javafx-1.0.3-20180318.152746-1-javadoc.jar!/" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/compiler.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/FrameGrabber.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWIndow.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindow.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindowController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/Utils.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/StereoVision/WorkWithImages/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CamerasUIWindow/MainWIndow.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CamerasUIWindow/Utils.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/WorkWithImages/Main.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\battl\IdeaProjects\StereoVision\libs" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -529,6 +437,7 @@
       <workItem from="1533765507483" duration="71000" />
       <workItem from="1533765729813" duration="599000" />
       <workItem from="1533906910458" duration="5643000" />
+      <workItem from="1534156245017" duration="6881000" />
     </task>
     <task id="LOCAL-00001" summary="Distance Measurement">
       <created>1523638474134</created>
@@ -544,17 +453,23 @@
       <option name="project" value="LOCAL" />
       <updated>1525296280070</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Distance Measurement">
+      <created>1534101021760</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1534101021760</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39046000" />
+    <option name="totallyTimeSpent" value="45979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19463088" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19731544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Learn" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -564,7 +479,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.714094" visible="true" weight="0.27832168" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.71342283" visible="true" weight="0.23076923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -572,7 +487,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49932885" weight="0.32867134" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28590605" side_tool="true" visible="true" weight="0.27832168" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2865772" side_tool="true" visible="true" weight="0.23076923" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49733475" weight="0.32939914" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -670,13 +585,6 @@
     <entry file="file://F:/CamerasUIWindow/DistanceToTheObject.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/event/EventHandler.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java" />
-    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/DistanceThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.graphics/javafx/scene/image/ImageView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -691,6 +599,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -699,56 +614,76 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="107">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
-          <folding>
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1756#1757#0" expanded="true" />
-            <element signature="e#1937#1938#0" expanded="true" />
-            <element signature="e#2011#2012#0" expanded="true" />
-            <element signature="e#2215#2216#0" expanded="true" />
-            <element signature="e#2279#2280#0" expanded="true" />
-            <element signature="e#2486#2487#0" expanded="true" />
-            <element signature="e#2554#2555#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="251" column="21" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
+        <state relative-caret-position="107">
+          <caret line="436" column="32" selection-start-line="436" selection-start-column="32" selection-end-line="436" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2488#2489#0" expanded="true" />
+            <element signature="e#2527#2528#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/DistanceThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/DistanceToTheObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="66">
+          <caret line="67" column="71" selection-start-line="67" selection-start-column="71" selection-end-line="67" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1154">
+          <caret line="236" selection-start-line="236" selection-end-line="236" />
+          <folding>
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#4514#4515#0" expanded="true" />
+            <element signature="e#4542#4543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartUI/ChartUi.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartUI/ChartUIConroller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -809,6 +744,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -816,7 +752,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>opencv-341</last-edited>
+          <last-edited>jzy3d-javafx-1.0.3-20180318.152746-1-javadoc</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

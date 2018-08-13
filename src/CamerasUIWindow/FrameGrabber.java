@@ -37,7 +37,6 @@ public class FrameGrabber implements Runnable {
     private int centerOfObject[];
 
 
-
     public int[] getCenterOfObject() {
         return centerOfObject;
     }
@@ -48,7 +47,7 @@ public class FrameGrabber implements Runnable {
         this.mwc = mwc;
     }
 
-    public FrameGrabber(byte cameraId, byte whichImageView, MainWindowController mwc,int staffUpdatePeriod) {
+    public FrameGrabber(byte cameraId, byte whichImageView, MainWindowController mwc, int staffUpdatePeriod) {
         this.cameraId = cameraId;
         this.whichImageView = whichImageView;
         this.mwc = mwc;
@@ -114,9 +113,9 @@ public class FrameGrabber implements Runnable {
                 toWindow("Stop camera " + (whichImageView + 1));
 
             } else {
-
-                toWindow("", "Impossible to open the camera connection... with ID = " +cameraId);
-
+                if (!mwc.isOpenedFromChange()) {
+                    toWindow("", "Impossible to open the camera connection... with ID = " + cameraId);
+                }
             }
 
         } else { // if camera is active
@@ -150,7 +149,7 @@ public class FrameGrabber implements Runnable {
 
     private Image getScaledImage(Image im, int w, int h) {
 
-      return null;
+        return null;
     }
 
     static public Mat getMorph() {
@@ -173,7 +172,7 @@ public class FrameGrabber implements Runnable {
                 if (!frame.empty()) {
 
                     Image imageToShow = Utils.mat2Image(frame);
-                    Image nImage = Utils.getScaledImage(imageToShow,mwc.getWidthOfVideo(),mwc.getHeightOfVideo());
+                    Image nImage = Utils.getScaledImage(imageToShow, mwc.getWidthOfVideo(), mwc.getHeightOfVideo());
 
                     frame = Utils.bufferedImage2Mat_v2(SwingFXUtils.fromFXImage(nImage, null));
 
@@ -246,8 +245,10 @@ public class FrameGrabber implements Runnable {
                 }
 
             } catch (Exception e) {
-                // log the (full) error
-                toWindow("Error","Exception during the image elaboration... "+e.getMessage());
+                if (!mwc.isOpenedFromChange()) {
+                    // log the (full) error
+                    toWindow("Error", "Exception during the image elaboration... " + e.getMessage());
+                }
             }
         }
 
