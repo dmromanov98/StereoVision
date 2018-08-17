@@ -64,6 +64,7 @@ public class DistanceToTheObject {
 
 
     public static double getDistanceByMethodTwo(FrameGrabber[] grabbers){
+
         try {
             dx1 = Math.abs(centerOfImages[0] - grabbers[0].getCenterOfObject()[0]);
             dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
@@ -76,13 +77,13 @@ public class DistanceToTheObject {
 
         //System.out.println("dy = " + dy);
 
-        double alphay = dy / 319 * 26.5;
+        double alphay = dy / centerOfImages[0] * 26.5;
 
         //System.out.println("alpha y = " + alphay);
 
 
-        double alpha = dx1 / 319 * 26.5;
-        double beta = dx2 / 319 * 26.5;
+        double alpha = dx1 / centerOfImages[0] * 26.5;
+        double beta = dx2 / centerOfImages[0] * 26.5;
 
         double alphahatch = 90 - alpha;
         double betahatch = 90 - beta;

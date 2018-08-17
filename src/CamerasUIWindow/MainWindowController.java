@@ -1,7 +1,10 @@
 package CamerasUIWindow;
 
+import ChartsUIDistance.ChartUIConroller;
+import ChartsUIDistance.MainChartUiDistance;
+import Utils.Test;
+import Utils.Utils;
 import com.jfoenix.controls.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,7 +16,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.videoio.VideoCapture;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -113,6 +115,12 @@ public class MainWindowController implements Initializable {
     private DistanceThread distanceThread;
     private Thread distanceShow;
 
+    public static void setGuis(GUIs guis) {
+        MainWindowController.guis = guis;
+    }
+
+    private static GUIs guis;
+
     public boolean isOpenedFromChange() {
         return openedFromChange;
     }
@@ -187,7 +195,20 @@ public class MainWindowController implements Initializable {
         btn.setOnAction(event -> dialog.close());
         content.setActions(btn);
         dialog.show();
-        //System.out.println("Here11");
+    }
+
+    //init dialog window for messages
+    public void dialogWindow(String cause, String message,StackPane stackPane) {
+        JFXDialogLayout content = new JFXDialogLayout();
+        Text txt = new Text(cause);
+        txt.setFont(Font.font("Verdana", 18));
+        content.setHeading(txt);
+        content.setBody(new Text(message));
+        JFXButton btn = new JFXButton("Ok");
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        btn.setOnAction(event -> dialog.close());
+        content.setActions(btn);
+        dialog.show();
     }
 
 
@@ -346,7 +367,8 @@ public class MainWindowController implements Initializable {
 
         staffUpdatePeriodField.setText("33");
 
-        MainWindow.setMwc(this);
+        GUIs.setMwc(this);
+        ChartUIConroller.setMwc(this);
 
     }
 
@@ -468,5 +490,15 @@ public class MainWindowController implements Initializable {
         } else {
             dialogWindow("Error", "Staff update period(FPS) must be a NUMBER!");
         }
+    }
+
+    public void drawAccuracyDistance() {
+        MainChartUiDistance.initWindow();
+    }
+
+    public void drawAccuracyQuality() {
+    }
+
+    public void drawAccuracyStaffUpdate() {
     }
 }

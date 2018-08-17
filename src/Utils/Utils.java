@@ -1,4 +1,4 @@
-package CamerasUIWindow;
+package Utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,4 @@
-package CamerasUIWindow;
+package Utils;
 
 import static java.lang.Double.valueOf;
 
