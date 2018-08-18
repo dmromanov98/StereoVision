@@ -137,14 +137,19 @@ public class FrameGrabber implements Runnable {
 
         //Getting object with GrayColor
         Mat frame = grabFrame();
+        Image imageToShow;
+        try {
+            //convert mat object to JavaFxImage
+            imageToShow = Utils.mat2Image(frame);
 
-        //convert mat object to JavaFxImage
-        Image imageToShow = Utils.mat2Image(frame);
+            //System.out.println(nImage.getHeight()+" "+nImage.getWidth());
+            //imageView camera updating to imageToShow
+            toWindow(imageToShow);
+
+        }catch (IllegalArgumentException e){}
 
 
-        //System.out.println(nImage.getHeight()+" "+nImage.getWidth());
-        //imageView camera updating to imageToShow
-        toWindow(imageToShow);
+
 
     }
 

@@ -2,11 +2,8 @@ package ChartsUIDistance;
 
 import CamerasUIWindow.MainWindowController;
 import Dots.DotsOfChartDistance;
-import Dots.DotsOfCharts;
 import Utils.Timer;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.StackedAreaChart;
@@ -34,9 +31,6 @@ public class ChartUIConroller implements Initializable {
     private JFXTextField colMeasurements;
 
     @FXML
-    private JFXButton measurementButton;
-
-    @FXML
     private StackPane stackPane;
 
     private static MainWindowController mwc;
@@ -60,35 +54,11 @@ public class ChartUIConroller implements Initializable {
         colMeasurements.setText("5");
         Timer.setChartUic(this);
 
-//        XYChart.Series series = new XYChart.Series();
-//        series.setName("My");
-//        series.getData().add(new XYChart.Data( 0, 567));
-//        series.getData().add(new XYChart.Data( 1, 612));
-//        series.getData().add(new XYChart.Data( 2, 800));
-//        series.getData().add(new XYChart.Data( 3, 780));
-//        series.getData().add(new XYChart.Data( 4, 650));
-//        series.getData().add(new XYChart.Data( 5, 610));
-//        series.getData().add(new XYChart.Data( 6, 590));
-//        chart.getData().add(series);
-//
-//        XYChart.Series dataSeries2 = new XYChart.Series();
-//        dataSeries2.setName("Mobile");
-//
-//        dataSeries2.getData().add(new XYChart.Data( 0, 101));
-//        dataSeries2.getData().add(new XYChart.Data( 1, 110));
-//        dataSeries2.getData().add(new XYChart.Data( 2, 140));
-//        dataSeries2.getData().add(new XYChart.Data( 3, 132));
-//        dataSeries2.getData().add(new XYChart.Data( 4, 115));
-//        dataSeries2.getData().add(new XYChart.Data( 5, 109));
-//        dataSeries2.getData().add(new XYChart.Data( 6, 105));
-//
-//        chart.getData().add(dataSeries2);
     }
 
 
     private int colMeasurement = 0;
     private int step;
-    //private static XYChart.Series dotsSeries;
     private ArrayList<XYChart.Series> series = new ArrayList<>();
     private double distanceBetweenCameras;
     private double accuracy;
@@ -97,15 +67,22 @@ public class ChartUIConroller implements Initializable {
 
 
     public void addDotToSeries() {
+        System.out.println(startDistance+" "+coordsResult);
         accuracy = (double) startDistance / coordsResult;
-        series.get(series.size()).getData().add(new XYChart.Data(accuracy, startDistance));
-        dotsOfChartDistance.addSeries(series.get(series.size()));
-        //chart.getData().
-        //chart.getData().remove(dotsSeries);
-        //chart.getData().
-        chart.getData().add(series.get(series.size()));
+        System.out.println(accuracy);
+        series.get(series.size()-1).getData().add(new XYChart.Data(startDistance, accuracy));
+        dotsOfChartDistance.addSeries(series.get(series.size()-1));
+
         startDistance = startDistance + step;
         infoTextLabel.setText("Now you must set distance from cameras to object = " + startDistance + " and click Start Measuring");
+
+        if(colMeasurement == 0){
+            startDistance = 15;
+            infoTextLabel.setText("Set the starting distance between the cameras in the main window, enter the measuring " +
+                    "step in the current window (default = 5) (the distance to which you will move the object)" +
+                    ",enter number of measurements (default = 5) and after click the button Start measuring, start distance from" +
+                    "cameras = " + startDistance + ", set your object on distance = " + startDistance);
+        }
     }
 
     public void coordinateCalculation() {
@@ -123,12 +100,14 @@ public class ChartUIConroller implements Initializable {
 
             if (testOnNumber(colMeasurements.getText())) {
                 if (testOnNumber(stepField.getText())) {
-
+                    System.out.println("here !!! ");
                     series.add(new XYChart.Series());
+
                     distanceBetweenCameras = Double.valueOf(mwc.getDistanceBetweenCamerasField().getText());
 
-                    series.get(series.size()).setName(String.valueOf(distanceBetweenCameras) + " cm");
-                    //chart.getData().add(dotsSeries);
+                    series.get(series.size()-1).setName(String.valueOf(distanceBetweenCameras) + " cm");
+                    chart.getData().add(series.get(series.size()-1));
+
 
                     step = Integer.valueOf(stepField.getText());
                     colMeasurement = Integer.valueOf(colMeasurements.getText());
@@ -148,17 +127,7 @@ public class ChartUIConroller implements Initializable {
             timer.start();
             infoTextLabel.setText("Please wait...");
 
-            //timer.join();
-
             colMeasurement--;
-        }
-        if (colMeasurement == 0) {
-            startDistance = 15;
-            infoTextLabel.setText("Set the starting distance between the cameras in the main window, enter the measuring " +
-                    "step in the current window (default = 5) (the distance to which you will move the object)" +
-                    ",enter number of measurements (default = 5) and after click the button Start measuring, start distance from" +
-                    "cameras = " + startDistance + ", set your object on distance = " + startDistance);
-            //System.out.println("finish");
         }
 
     }

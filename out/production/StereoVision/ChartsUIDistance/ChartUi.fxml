@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChartsUIDistance.ChartUIConroller">
+    <children>
+        <StackedAreaChart fx:id="chart" layoutY="46.0" prefHeight="662.0" StackPane.alignment="BOTTOM_LEFT">
+            <xAxis>
+                <NumberAxis side="BOTTOM" upperBound="9.0" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" upperBound="10.0" />
+            </yAxis>
+            <StackPane.margin>
+                <Insets top="45.0" />
+            </StackPane.margin>
+        </StackedAreaChart>
+        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="50.0" prefWidth="871.0" text="None" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets />
+            </StackPane.margin>
+        </Label>
+        <JFXTextField fx:id="stepField" focusColor="#0040ff" labelFloat="true" layoutX="900.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="63.0" promptText="Step(cm):" unFocusColor="#05b9ff" AnchorPane.leftAnchor="900.0" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="325.0" top="10.0" />
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXButton fx:id="measurementButton" layoutX="1147.0" layoutY="20.0" onAction="#measurmentBtn" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #3797ff;" text="Start Measuring" textAlignment="CENTER" textFill="WHITE" wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="15.0" top="10.0" />
+            </StackPane.margin>
+        </JFXButton>
+        <JFXTextField fx:id="colMeasurements" focusColor="#0040ff" labelFloat="true" layoutX="978.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Number of measurements:" unFocusColor="#05b9ff" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="150.0" top="10.0" />
+            </StackPane.margin>
+        </JFXTextField>
+    </children>
+</StackPane>
