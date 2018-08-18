@@ -1,11 +1,14 @@
 package ChartsUIDistance;
 
 import CamerasUIWindow.MainWindowController;
+import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.StackedAreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
@@ -48,10 +51,11 @@ public class ChartUIConroller implements Initializable {
         infoTextLabel.setText("Set the starting distance between the cameras in the main window, enter the measuring " +
                 "step in the current window (default = 5) (the distance to which you will move the object)" +
                 ",enter number of measurements (default = 5) and after click the button Start measuring, start distance from" +
-                "cameras = "+startDistance+", set your object on distance = "+startDistance);
+                "cameras = " + startDistance + ", set your object on distance = " + startDistance);
 
         stepField.setText("5");
         colMeasurements.setText("5");
+        Timer.setChartUic(this);
 
 //        XYChart.Series series = new XYChart.Series();
 //        series.setName("My");
@@ -79,20 +83,68 @@ public class ChartUIConroller implements Initializable {
     }
 
 
+    private int colMeasurement = 0;
+    private int step;
+    private static XYChart.Series dotsSeries;
+    private double distanceBetweenCameras;
+    private double accuracy;
+    private double coordsResult = 0;
+
+    public void addDotToSeries(){
+        accuracy = (double) startDistance/coordsResult;
+        dotsSeries.getData().add(new XYChart.Data(accuracy,startDistance));
+        //chart.getData().remove(dotsSeries);
+        //chart.getData().
+        chart.getData().add(dotsSeries);
+        startDistance = startDistance + step;
+        infoTextLabel.setText("Now you must set distance from cameras to object = "+startDistance+" and click Start Measuring");
+    }
+
+    public void coordinateCalculation(){
+        if(coordsResult == 0){
+            coordsResult = Double.valueOf(mwc.getLblDistance1().getText());
+        }else{
+            coordsResult = (coordsResult + Double.valueOf(mwc.getLblDistance1().getText()))/2;
+        }
+    }
 
 
-    public void measurmentBtn() {
-        if(measurementButton.getText().equals("Start Measuring")){
-            if(testOnNumber(stepField.getText())){
-                if(testOnNumber(colMeasurements.getText())){
-                    for(int i = 0;i<Integer.valueOf(colMeasurements.getText());i++){
+    public void measurmentBtn() throws InterruptedException {
+        if (measurementButton.getText().equals("Start Measuring")) {
 
-                    }
-                }else {
-                    mwc.dialogWindow("Number of measurements","Must be a number!",stackPane);
+            if (colMeasurement == 0) {
+
+                dotsSeries = new XYChart.Series();
+                distanceBetweenCameras = Double.valueOf(mwc.getDistanceBetweenCamerasField().getText());
+                dotsSeries.setName(String.valueOf(distanceBetweenCameras)+" cm");
+                //chart.getData().add(dotsSeries);
+
+                if (testOnNumber(colMeasurements.getText())) {
+                    colMeasurement = Integer.valueOf(colMeasurements.getText());
+                } else {
+                    mwc.dialogWindow("Number of measurements", "Must be a number!", stackPane);
                 }
-            }else{
-                mwc.dialogWindow("Step(cm)","Must be a number!",stackPane);
+
+                if (testOnNumber(stepField.getText())) {
+                    step = Integer.valueOf(stepField.getText());
+                } else {
+                    colMeasurement = 0;
+                    mwc.dialogWindow("Step(cm)", "Must be a number!", stackPane);
+                }
+
+            }
+
+
+            if (colMeasurement != 0) {
+                Thread timer = new Thread(new Timer());
+
+                timer.start();
+                //timer.join();
+
+                colMeasurement--;
+            }
+            if (colMeasurement == 0) {
+                System.out.println("finish");
             }
         }
     }

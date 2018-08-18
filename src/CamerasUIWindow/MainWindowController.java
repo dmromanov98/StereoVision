@@ -85,11 +85,19 @@ public class MainWindowController implements Initializable {
     @FXML
     private JFXColorPicker colorPicker;
 
+    public JFXTextField getDistanceBetweenCamerasField() {
+        return distanceBetweenCamerasField;
+    }
+
     @FXML
     private JFXTextField distanceBetweenCamerasField;
 
     @FXML
     private JFXTextField focalLengthField;
+
+    public Label getLblDistance1() {
+        return lblDistance1;
+    }
 
     @FXML
     private Label lblDistance1;
@@ -432,6 +440,8 @@ public class MainWindowController implements Initializable {
             startShowDistanceButton.setText("Start showing distance");
         }
     }
+
+    private static double distance = 0;
 
     public void showDistance(double distance) {
         lblDistance1.setText(String.valueOf(distance));
