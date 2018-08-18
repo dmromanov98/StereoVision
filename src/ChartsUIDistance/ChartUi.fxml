@@ -22,7 +22,7 @@
                 <Insets top="45.0" />
             </StackPane.margin>
         </StackedAreaChart>
-        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="50.0" prefWidth="871.0" text="None" wrapText="true" StackPane.alignment="TOP_LEFT">
+        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="55.0" prefWidth="871.0" text="None" wrapText="true" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                 <Insets />
             </StackPane.margin>

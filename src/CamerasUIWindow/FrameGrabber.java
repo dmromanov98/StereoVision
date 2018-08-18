@@ -148,9 +148,6 @@ public class FrameGrabber implements Runnable {
 
         }catch (IllegalArgumentException e){}
 
-
-
-
     }
 
     private Image getScaledImage(Image im, int w, int h) {
