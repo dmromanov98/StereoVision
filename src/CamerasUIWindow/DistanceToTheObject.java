@@ -8,6 +8,8 @@ public class DistanceToTheObject {
     //center of ImageView
     private static double centerOfImages[] = {319, 239};
 
+    //focal length = 3.67 mm
+
     //focal length
     private static double focus = 681;
 
@@ -15,7 +17,8 @@ public class DistanceToTheObject {
     // relative to the center of the camera
     private static double dx1;
     private static double dx2;
-
+    private static double dy1;
+    private static double dy2;
 
     public static double getDistanceBetweenCameras() {
         return distanceBetweenCameras;
@@ -38,28 +41,30 @@ public class DistanceToTheObject {
     }
 
 
-    public static double getDistanceByMethodOne(FrameGrabber[] grabbers) {
 
-        //System.out.println(centerOfImages[0]+" "+centerOfImages[1]);
+    public static double getDistanceByMethodOne(FrameGrabber[] grabbers) {
 
         try {
             dx1 = Math.abs(centerOfImages[0] - grabbers[0].getCenterOfObject()[0]);
             dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
+            dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
+            dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
         }catch (NullPointerException npex){}
 
-        double alpha = Math.toDegrees(Math.atan(dx1 / focus));
-        double beta = Math.toDegrees(Math.atan(dx2 / focus));
+        double alpha = 90 - Math.toDegrees(Math.atan(dx1 / focus));
+        double beta = 90 - Math.toDegrees(Math.atan(dx2 / focus));
+        double gamma = 180-alpha-beta;
 
-        double alphahatch = 90 - alpha;
-        double betahatch = 90 - beta;
-        double teta = 180 - alphahatch - betahatch;
+        double a = (Math.sin(Math.toRadians(alpha))*distanceBetweenCameras)/Math.sin(Math.toRadians(gamma));
 
-        double b = (distanceBetweenCameras / Math.sin(Math.toRadians(teta))) * Math.sin(Math.toRadians(betahatch));
-        double c = (distanceBetweenCameras / Math.sin(Math.toRadians(teta))) * Math.sin(Math.toRadians(alphahatch));
+        double r = Math.sqrt(Math.pow(distanceBetweenCameras/2,2) + Math.pow(a,2) -
+                Math.pow(distanceBetweenCameras,2)/2*a*Math.cos(Math.toRadians(beta)));
 
-        double s = 0.5 * Math.sqrt(2 * b * b + 2 * c * c - distanceBetweenCameras * distanceBetweenCameras);
+        double dy = (dy1+dy2)/2;
 
-        return s;
+        double distance = r/Math.cos(Math.atan(dy/focus));
+
+        return distance;
     }
 
 
@@ -70,17 +75,13 @@ public class DistanceToTheObject {
             dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
         }catch (NullPointerException npex){}
 
-        double dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
-        double dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
+        dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
+        dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
 
         double dy = (dy1 + dy2) / 2;
 
-        //System.out.println("dy = " + dy);
 
         double alphay = dy / centerOfImages[0] * 26.5;
-
-        //System.out.println("alpha y = " + alphay);
-
 
         double alpha = dx1 / centerOfImages[0] * 26.5;
         double beta = dx2 / centerOfImages[0] * 26.5;

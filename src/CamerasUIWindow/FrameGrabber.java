@@ -80,7 +80,7 @@ public class FrameGrabber implements Runnable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                mwc.dialogWindow(cause, message);
+                mwc.dialogWindow(cause, message,null);
             }
         });
     }

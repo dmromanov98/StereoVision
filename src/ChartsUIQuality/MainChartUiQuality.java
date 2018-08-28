@@ -1,15 +1,14 @@
-package ChartsUIDistance;
+package ChartsUIQuality;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainChartUiDistance extends Application {
+public class MainChartUiQuality extends Application {
 
 
     private static Stage primaryStage;
@@ -38,7 +37,7 @@ public class MainChartUiDistance extends Application {
 
     public static void initWindow() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(MainChartUiDistance.class.getResource("ChartUiDistance.fxml"));
+        loader.setLocation(MainChartUiQuality.class.getResource("ChartUiQuality.fxml"));
 
         try {
             if(primaryStage == null)

@@ -174,7 +174,7 @@
                                            textFill="WHITE"/>
                                 <JFXTextField fx:id="staffUpdatePeriodField" focusColor="#0040ff" labelFloat="true"
                                               layoutX="15.0" layoutY="296.0" prefHeight="25.0" prefWidth="189.0"
-                                              promptText="Staff Update Period(FPS):" unFocusColor="#05b9ff"
+                                              promptText="Staff Update Period:" unFocusColor="#05b9ff"
                                               AnchorPane.leftAnchor="15.0"/>
                                 <JFXButton layoutX="237.0" layoutY="296.0" onAction="#serStaffUpdatePeriod"
                                            style="-fx-background-color: #3797ff;" text="Set this staff update period"
@@ -195,14 +195,14 @@
                                         <Font size="18.0"/>
                                     </font>
                                 </JFXButton>
-                                <JFXButton layoutX="640.0" layoutY="185.0" onAction="#drawAccuracyStaffUpdate"
-                                           prefHeight="68.0" prefWidth="259.0" style="-fx-background-color: #3797ff;"
-                                           text="Draw chart accuracy(staff update period)" textAlignment="CENTER"
-                                           textFill="WHITE" wrapText="true">
-                                    <font>
-                                        <Font size="18.0"/>
-                                    </font>
-                                </JFXButton>
+                                <!--<JFXButton layoutX="640.0" layoutY="185.0" onAction="#drawAccuracyStaffUpdate"-->
+                                           <!--prefHeight="68.0" prefWidth="259.0" style="-fx-background-color: #3797ff;"-->
+                                           <!--text="Draw chart accuracy(staff update period)" textAlignment="CENTER"-->
+                                           <!--textFill="WHITE" wrapText="true">-->
+                                    <!--<font>-->
+                                        <!--<Font size="18.0"/>-->
+                                    <!--</font>-->
+                                <!--</JFXButton>-->
                             </children>
                         </AnchorPane>
                     </content>

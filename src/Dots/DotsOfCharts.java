@@ -7,8 +7,18 @@ import java.util.ArrayList;
 public class DotsOfCharts {
 
     private ArrayList<XYChart.Series> accuracyDistanceBetweenCameras;
+
+    //0 - distance between cameras
+    //1 - Focal Length
+    //2 - Quality of video
+    //3 - Staff update period
+    private ArrayList<String[]> accuracyDBCProperties;
+
     private ArrayList<XYChart.Series> accuracyQualityOfVideo;
+    private ArrayList<String[]> accuracyQOVProperties;
+
     private ArrayList<XYChart.Series> accuracyStaffUpdatePeriod;
+    private ArrayList<String[]> accuracySUPProperties;
 
     public DotsOfCharts() {
         accuracyDistanceBetweenCameras = new ArrayList<>();

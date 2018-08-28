@@ -1,15 +1,22 @@
 package Utils;
 
-import ChartsUIDistance.ChartUIConroller;
 import javafx.application.Platform;
 
 public class Timer implements Runnable {
 
-    public static void setChartUic(ChartUIConroller chartUic) {
+    public static void setChartUic(ChartUiController chartUic) {
         Timer.chartUic = chartUic;
     }
 
-    private static ChartUIConroller chartUic;
+    private static ChartUiController chartUic;
+
+    public static void setDurationOfMeasurement(int durationOfMeasurement) {
+        Timer.durationOfMeasurement = durationOfMeasurement;
+    }
+
+    public static void setNumberOfMeasurementsForGivenTime(int numberOfMeasurementsForGivenTime) {
+        Timer.numberOfMeasurementsForGivenTime = numberOfMeasurementsForGivenTime;
+    }
 
     //TODO GIVE THIS PARAMETERS IN SETTINGS!
     private static int durationOfMeasurement = 5;
@@ -19,7 +26,9 @@ public class Timer implements Runnable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                chartUic.addDotToSeries();
+                try {
+                    chartUic.addDotToSeries();
+                }catch (IndexOutOfBoundsException e){}
             }
         });
     }
@@ -36,8 +45,13 @@ public class Timer implements Runnable {
     @Override
     public void run() {
         int time = 0;
+
+        if(durationOfMeasurement==0){
+            coordinateCalculation();
+        }
+
         while(time<durationOfMeasurement*1000){
-            if(time%((durationOfMeasurement/numberOfMeasurementsForGivenTime)*1000) == 0){
+            if(time%(((double)durationOfMeasurement/(double) numberOfMeasurementsForGivenTime)*1000) == 0){
                 //TODO SOMETHING
                 coordinateCalculation();
             }

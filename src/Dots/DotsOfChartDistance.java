@@ -1,39 +1,46 @@
 package Dots;
 
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 
 import java.util.ArrayList;
 
-public class DotsOfChartDistance {
+public class DotsOfChartDistance implements Dots {
 
-    private ArrayList<XYChart.Series> accuracyDistanceBetweenCameras;
+    private ArrayList<Series> accuracyDistanceBetweenCameras;
 
     public DotsOfChartDistance() {
         accuracyDistanceBetweenCameras = new ArrayList<>();
     }
 
+    @Override
     public void setNameOfNewSeries(String name) {
-        accuracyDistanceBetweenCameras.add(new XYChart.Series());
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size()).setName(name);
+        accuracyDistanceBetweenCameras.add(new Series());
+        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).setName(name);
     }
 
+    @Override
     public void addDot(double x, double y) {
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size()).getData().add(new XYChart.Data(x, y));
+        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).getData().add(new XYChart.Data(x, y));
     }
 
+    @Override
     public void addDot(XYChart.Data dot) {
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size()).getData().add(dot);
+        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).getData().add(dot);
     }
 
-    public void addSeries(XYChart.Series series) {
+    @Override
+    public void addSeries(Series series) {
         accuracyDistanceBetweenCameras.add(series);
     }
 
-    public void setSeries(ArrayList<XYChart.Series> series) {
+    @Override
+    public void setSeries(ArrayList<Series> series) {
         accuracyDistanceBetweenCameras = series;
     }
 
-    public ArrayList<XYChart.Series> getAccuracyDistanceBetweenCameras() {
+    @Override
+    public ArrayList<Series> getSeries() {
         return accuracyDistanceBetweenCameras;
     }
 

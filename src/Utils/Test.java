@@ -13,4 +13,14 @@ public class Test {
 
         return res;
     }
+
+    public static boolean testOnInteger(String string){
+        boolean res = false;
+        try {
+            int d = Integer.valueOf(string);
+            res = true;
+        }catch (Exception e){}
+
+        return res;
+    }
 }

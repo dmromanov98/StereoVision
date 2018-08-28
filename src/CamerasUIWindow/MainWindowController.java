@@ -1,7 +1,9 @@
 package CamerasUIWindow;
 
-import ChartsUIDistance.ChartUIConroller;
+import ChartsUIDistance.ChartUIDistanceController;
 import ChartsUIDistance.MainChartUiDistance;
+import ChartsUIQuality.ChartUIQualityController;
+import ChartsUIQuality.MainChartUiQuality;
 import Utils.Test;
 import Utils.Utils;
 import com.jfoenix.controls.*;
@@ -117,6 +119,10 @@ public class MainWindowController implements Initializable {
     @FXML
     private JFXCheckBox checkBoxAlgorithmTwo;
 
+    public JFXComboBox<String> getQualityComboBox() {
+        return qualityComboBox;
+    }
+
     @FXML
     private JFXComboBox<String> qualityComboBox;
 
@@ -192,28 +198,21 @@ public class MainWindowController implements Initializable {
     }
 
     //init dialog window for messages
-    public void dialogWindow(String cause, String message) {
-        JFXDialogLayout content = new JFXDialogLayout();
-        Text txt = new Text(cause);
-        txt.setFont(Font.font("Verdana", 18));
-        content.setHeading(txt);
-        content.setBody(new Text(message));
-        JFXButton btn = new JFXButton("Ok");
-        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
-        btn.setOnAction(event -> dialog.close());
-        content.setActions(btn);
-        dialog.show();
-    }
-
-    //init dialog window for messages
     public void dialogWindow(String cause, String message,StackPane stackPane) {
+
         JFXDialogLayout content = new JFXDialogLayout();
         Text txt = new Text(cause);
         txt.setFont(Font.font("Verdana", 18));
         content.setHeading(txt);
         content.setBody(new Text(message));
         JFXButton btn = new JFXButton("Ok");
-        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        JFXDialog dialog;
+
+        if(stackPane != null) {
+            dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        }else{
+            dialog = new JFXDialog(this.stackPane, content, JFXDialog.DialogTransition.CENTER);
+        }
         btn.setOnAction(event -> dialog.close());
         content.setActions(btn);
         dialog.show();
@@ -376,7 +375,8 @@ public class MainWindowController implements Initializable {
         staffUpdatePeriodField.setText("33");
 
         GUIs.setMwc(this);
-        ChartUIConroller.setMwc(this);
+        ChartUIDistanceController.setMwc(this);
+        ChartUIQualityController.setMwc(this);
 
     }
 
@@ -417,14 +417,14 @@ public class MainWindowController implements Initializable {
         if (Test.testOnNumber(distanceBetweenCamerasField.getText()))
             DistanceToTheObject.setDistanceBetweenCameras(Double.valueOf(distanceBetweenCamerasField.getText()));
         else
-            dialogWindow("Distance between cameras", "MUST BE A NUMBER!");
+            dialogWindow("Distance between cameras", "MUST BE A NUMBER!",null);
     }
 
     public void setFocalLength() {
         if (Test.testOnNumber(focalLengthField.getText()))
             DistanceToTheObject.setFocus(Double.valueOf(focalLengthField.getText()));
         else
-            dialogWindow("Focal length", "MUST BE A NUMBER!");
+            dialogWindow("Focal length", "MUST BE A NUMBER!",null);
     }
 
     public void startShowingDistance() {
@@ -498,7 +498,7 @@ public class MainWindowController implements Initializable {
             }
 
         } else {
-            dialogWindow("Error", "Staff update period(FPS) must be a NUMBER!");
+            dialogWindow("Error", "Staff update period(FPS) must be a NUMBER!",null);
         }
     }
 
@@ -507,6 +507,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void drawAccuracyQuality() {
+        MainChartUiQuality.initWindow();
     }
 
     public void drawAccuracyStaffUpdate() {
