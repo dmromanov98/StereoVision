@@ -1,4 +1,4 @@
-package Dots;
+package ChartsUI.Dots;
 
 import javafx.scene.chart.XYChart;
 
@@ -12,5 +12,6 @@ public interface Dots {
     void addSeries(XYChart.Series series);
     void setSeries(ArrayList<XYChart.Series> series);
     ArrayList<XYChart.Series> getSeries();
+    void addParameters(String[] strings);
 
 }

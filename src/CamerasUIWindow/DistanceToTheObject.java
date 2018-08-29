@@ -1,5 +1,8 @@
 package CamerasUIWindow;
 
+/***
+ * Class with algorithms measuring distance
+ */
 public class DistanceToTheObject {
 
     //distance between cameras
@@ -44,12 +47,7 @@ public class DistanceToTheObject {
 
     public static double getDistanceByMethodOne(FrameGrabber[] grabbers) {
 
-        try {
-            dx1 = Math.abs(centerOfImages[0] - grabbers[0].getCenterOfObject()[0]);
-            dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
-            dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
-            dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
-        }catch (NullPointerException npex){}
+        measurementDxDy(grabbers);
 
         double alpha = 90 - Math.toDegrees(Math.atan(dx1 / focus));
         double beta = 90 - Math.toDegrees(Math.atan(dx2 / focus));
@@ -67,16 +65,19 @@ public class DistanceToTheObject {
         return distance;
     }
 
-
-    public static double getDistanceByMethodTwo(FrameGrabber[] grabbers){
-
+    private static void measurementDxDy(FrameGrabber[] grabbers){
         try {
             dx1 = Math.abs(centerOfImages[0] - grabbers[0].getCenterOfObject()[0]);
             dx2 = Math.abs(centerOfImages[0] - grabbers[1].getCenterOfObject()[0]);
+            dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
+            dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
         }catch (NullPointerException npex){}
+    }
 
-        dy1 = Math.abs(centerOfImages[1] - grabbers[0].getCenterOfObject()[1]);
-        dy2 = Math.abs(centerOfImages[1] - grabbers[1].getCenterOfObject()[1]);
+
+    public static double getDistanceByMethodTwo(FrameGrabber[] grabbers){
+
+        measurementDxDy(grabbers);
 
         double dy = (dy1 + dy2) / 2;
 
@@ -96,7 +97,6 @@ public class DistanceToTheObject {
         double c = (distanceBetweenCameras / Math.sin(Math.toRadians(teta))) * Math.sin(Math.toRadians(alphahatch))
                 / Math.cos(Math.toRadians(alphay));
 
-        //System.out.println(alphay);
 
         double s = 0.5 * Math.sqrt(2 * b * b + 2 * c * c - distanceBetweenCameras * distanceBetweenCameras);
 

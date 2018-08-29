@@ -3,7 +3,6 @@ package CamerasUIWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -29,6 +28,9 @@ public class GUIs extends Application {
         initWindow();
     }
 
+    /**
+     * Main window initialization
+     */
     public void initWindow() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(MainWindow.class.getResource("MainWindow.fxml"));
@@ -51,9 +53,6 @@ public class GUIs extends Application {
         primaryStage.setResizable(false);
 
         primaryStage.setOnCloseRequest(we -> {
-
-            //TODO: IDK FOR WHAT IT
-            //System.out.println(mwc.getGrabbers()[0] + " " + mwc.getGrabbers()[1]);
 
             if (mwc.getGrabbers()[0] != null)
                 mwc.startFirstCamera();

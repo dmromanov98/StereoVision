@@ -1,4 +1,4 @@
-package ChartsUIQuality;
+package ChartsUI.ChartsUIQuality;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +18,6 @@ public class MainChartUiQuality extends Application {
 
     public static void main(String[] args) {
 
-        //load openCv lib
-        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
         launch(args);
     }
 
@@ -30,7 +27,6 @@ public class MainChartUiQuality extends Application {
 
         //init window
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ChartUi");
 
         initWindow();
     }
@@ -48,7 +44,7 @@ public class MainChartUiQuality extends Application {
             System.exit(10);
         }
 
-        primaryStage.setTitle("Chart Accuracy/Distance");
+        primaryStage.setTitle("Chart Accuracy/Quality");
         primaryStage.setResizable(false);
 
         Scene scene = new Scene(rootLayout);

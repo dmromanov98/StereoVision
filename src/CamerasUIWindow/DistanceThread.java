@@ -2,16 +2,22 @@ package CamerasUIWindow;
 
 import javafx.application.Platform;
 
+/***
+ * Thread for showing distance in window
+ */
 public class DistanceThread implements Runnable {
 
     private MainWindowController mwc;
+
+    //Cycle operation variable
     private boolean work = true;
+
+    //algorithm(method) of measuring distance
+    private static byte method = 1;
 
     public static void setMethod(byte method) {
         DistanceThread.method = method;
     }
-
-    private static byte method = 1;
 
     public DistanceThread(MainWindowController mwc) {
         this.mwc = mwc;
@@ -41,6 +47,7 @@ public class DistanceThread implements Runnable {
             }
         }
     }
+
 
     public void toWindow(double distance) {
         Platform.runLater(new Runnable() {

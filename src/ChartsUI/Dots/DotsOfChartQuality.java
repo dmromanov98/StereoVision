@@ -1,4 +1,4 @@
-package Dots;
+package ChartsUI.Dots;
 
 import javafx.scene.chart.XYChart;
 
@@ -7,6 +7,24 @@ import java.util.ArrayList;
 public class DotsOfChartQuality implements Dots {
 
     private ArrayList<XYChart.Series> accuracyQualityOfVideo;
+
+    /**
+     *
+     * This value stores the camera settings when you add each point
+     *
+     * Object definition parameters , style ("@scroll**.value @scroll**.value",example: "100 200"):
+     * 0 - Hue
+     * 1 - Saturation
+     * 2 - Value
+     *
+     * Settings:
+     * 3 - Distance between cameras
+     * 4 - Focal length
+     * 5 - Quality of video
+     * 6 - Staff update period
+     *
+     */
+    private ArrayList<String[]> parameters;
 
     public DotsOfChartQuality(){
         this.accuracyQualityOfVideo = new ArrayList<>();
@@ -41,5 +59,10 @@ public class DotsOfChartQuality implements Dots {
     @Override
     public ArrayList<XYChart.Series> getSeries() {
         return accuracyQualityOfVideo;
+    }
+
+    @Override
+    public void addParameters(String[] strings) {
+        parameters.add(strings);
     }
 }

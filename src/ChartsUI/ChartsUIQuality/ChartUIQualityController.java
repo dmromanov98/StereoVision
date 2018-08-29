@@ -1,14 +1,14 @@
-package ChartsUIDistance;
+package ChartsUI.ChartsUIQuality;
 
 import CamerasUIWindow.MainWindowController;
-import Dots.DotsOfChartDistance;
-import Utils.ChartUiController;
+import ChartsUI.Dots.DotsOfChartQuality;
+import ChartsUI.ChartUiController;
+import ChartsUI.Dots.Gson.Serialization;
 import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
@@ -19,9 +19,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static Utils.Test.testOnInteger;
-import static Utils.Test.testOnNumber;
+import static Utils.Test.testOnDouble;
 
-public class ChartUIDistanceController implements ChartUiController {
+public class ChartUIQualityController implements ChartUiController {
+
     @FXML
     private AreaChart chart;
 
@@ -52,7 +53,7 @@ public class ChartUIDistanceController implements ChartUiController {
     private static MainWindowController mwc;
 
     public static void setMwc(MainWindowController mwc) {
-        ChartUIDistanceController.mwc = mwc;
+        ChartUIQualityController.mwc = mwc;
     }
 
     private double startDistance = 15;
@@ -60,17 +61,18 @@ public class ChartUIDistanceController implements ChartUiController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        infoTextLabel.setText("Set the distance between the cameras in the main window, enter the measuring " +
+        infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
                 "step in the current window (the distance to which you will move the object)" +
                 ",enter number of measurements, Duration of measurement(Second), " +
                 "Number of measurements for given time and after click the button Start measuring, start distance from" +
                 "cameras = " + startDistance + ", set your object on distance = " + startDistance);
 
         stepField.setText("5");
-        colMeasurements.setText("5");
+        colMeasurements.setText("4");
         durationOfMeasurementField.setText("5");
         numberOfMeasurementsForGivenTimeField.setText("5");
         distanceFromCamerasToObjectField.setText("15");
+
         Timer.setChartUic(this);
 
     }
@@ -78,42 +80,54 @@ public class ChartUIDistanceController implements ChartUiController {
     private int colMeasurement = 0;
     private int step;
     private ArrayList<XYChart.Series> series = new ArrayList<>();
-    private double distanceBetweenCameras;
+    private String qualityOfVideo;
     private double accuracy;
-    private double coordsResult = 0;
-    DotsOfChartDistance dotsOfChartDistance = new DotsOfChartDistance();
+    private double cordsResult = 0;
+    DotsOfChartQuality dotsOfChartQuality = new DotsOfChartQuality();
 
     @Override
     public void addDotToSeries() {
-        System.out.println(startDistance + " " + coordsResult);
 
-        if (startDistance < coordsResult)
-            accuracy = startDistance / coordsResult;
+        if (startDistance < cordsResult)
+            accuracy = startDistance / cordsResult;
         else
-            accuracy = coordsResult / startDistance;
+            accuracy = cordsResult / startDistance;
 
         series.get(series.size() - 1).getData().add(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
-        dotsOfChartDistance.addSeries(series.get(series.size() - 1));
+        dotsOfChartQuality.addSeries(series.get(series.size() - 1));
+
+        String[] parameters = new String[7];
+        parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue())+" "+String.valueOf(mwc.getScrollHueStop().getValue());
+        parameters[1] = String.valueOf(mwc.getScrollSaturationStart().getValue())+" "+String.valueOf(mwc.getScrollSaturationStop().getValue());
+        parameters[2] = String.valueOf(mwc.getScrollValueStart().getValue())+" "+String.valueOf(mwc.getScrollValueStop().getValue());
+        parameters[3] = mwc.getDistanceBetweenCamerasField().getText();
+        parameters[4] = mwc.getFocalLengthField().getText();
+        parameters[4] = qualityOfVideo;
+        parameters[6] = mwc.getStaffUpdatePeriodField().getText();
+
+        dotsOfChartQuality.addParameters(parameters);
+
 
         startDistance = startDistance + step;
         infoTextLabel.setText("Now you must set distance from cameras to object = " + startDistance + " and click Start Measuring");
 
         if (colMeasurement == 0) {
             startDistance = 15;
-            infoTextLabel.setText("Set the distance between the cameras in the main window, enter the measuring " +
-                    "step in the current window (default = 5) (the distance to which you will move the object)" +
-                    ",enter number of measurements (default = 5) and after click the button Start measuring, start distance from" +
+            infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
+                    "step in the current window (the distance to which you will move the object)" +
+                    ",enter number of measurements, Duration of measurement(Second), " +
+                    "Number of measurements for given time and after click the button Start measuring, start distance from" +
                     "cameras = " + startDistance + ", set your object on distance = " + startDistance);
         }
     }
 
     @Override
     public void coordinateCalculation() {
-        if (coordsResult == 0) {
-            coordsResult = Double.valueOf(mwc.getLblDistance1().getText());
+        if (cordsResult == 0) {
+            cordsResult = Double.valueOf(mwc.getLblDistance1().getText());
         } else {
-            coordsResult = (coordsResult + Double.valueOf(mwc.getLblDistance1().getText())) / 2;
+            cordsResult = (cordsResult + Double.valueOf(mwc.getLblDistance1().getText())) / 2;
         }
     }
 
@@ -128,19 +142,27 @@ public class ChartUIDistanceController implements ChartUiController {
                     testOnInteger(numberOfMeasurementsForGivenTimeField.getText())) {
                 if (Integer.valueOf(durationOfMeasurementField.getText()) >= 0) {
                     if (Integer.valueOf(numberOfMeasurementsForGivenTimeField.getText()) > 0) {
+
                         Timer.setDurationOfMeasurement(Integer.valueOf(durationOfMeasurementField.getText()));
                         Timer.setNumberOfMeasurementsForGivenTime(Integer.valueOf(numberOfMeasurementsForGivenTimeField.getText()));
 
                         series.add(new XYChart.Series());
 
-                        distanceBetweenCameras = Double.valueOf(mwc.getDistanceBetweenCamerasField().getText());
+                        if (mwc.getQualityComboBox().getSelectionModel().selectedItemProperty().getValue() != null)
+                            qualityOfVideo = mwc.getQualityComboBox().getSelectionModel().selectedItemProperty().getValue();
+                        else
+                            qualityOfVideo = "480p";
 
-                        series.get(series.size() - 1).setName(String.valueOf(distanceBetweenCameras) + " cm");
+
+
+
+                        series.get(series.size() - 1).setName(String.valueOf(qualityOfVideo));
                         chart.getData().add(series.get(series.size() - 1));
 
                         step = Integer.valueOf(stepField.getText());
                         colMeasurement = Integer.valueOf(colMeasurements.getText());
                         measurementButton.setText("Start Measuring");
+
                     } else {
                         mwc.dialogWindow("Error entering data!", "Number of measurements for given time" +
                                 "Must be > 1", stackPane);
@@ -171,19 +193,27 @@ public class ChartUIDistanceController implements ChartUiController {
 
     @Override
     public void setStartDistance() {
-        if(testOnNumber(distanceFromCamerasToObjectField.getText()) &&
-                Double.valueOf(distanceFromCamerasToObjectField.getText())>0){
+        if (testOnDouble(distanceFromCamerasToObjectField.getText()) &&
+                Double.valueOf(distanceFromCamerasToObjectField.getText()) > 0) {
 
             startDistance = Double.valueOf(distanceFromCamerasToObjectField.getText());
 
-            infoTextLabel.setText("Set the distance between the cameras in the main window, enter the measuring " +
-                    "step in the current window (default = 5) (the distance to which you will move the object)" +
-                    ",enter number of measurements (default = 5) and after click the button Start measuring, start distance from" +
+            infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
+                    "step in the current window (the distance to which you will move the object)" +
+                    ",enter number of measurements, Duration of measurement(Second), " +
+                    "Number of measurements for given time and after click the button Start measuring, start distance from" +
                     "cameras = " + startDistance + ", set your object on distance = " + startDistance);
 
-        }else{
+        } else {
             mwc.dialogWindow("Error entering data!",
                     "Start distance from cameras to object must be a number > 0", stackPane);
         }
+    }
+    @Override
+    public void loadGraphs() {
+    }
+    @Override
+    public void saveGraphs() {
+        Serialization.serialize(dotsOfChartQuality);
     }
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackPane" prefHeight="733.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/9.0.1"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChartsUI.ChartsUIDistance.ChartUIDistanceController">
+    <children>
+        <JFXButton fx:id="measurementButton" layoutX="1147.0" layoutY="20.0" onAction="#measurementBtn"
+                   prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #3797ff;" text="Start Measuring"
+                   textAlignment="CENTER" textFill="WHITE" wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets/>
+            </StackPane.margin>
+        </JFXButton>
+        <JFXTextField fx:id="colMeasurements" focusColor="#0040ff" labelFloat="true" layoutX="978.0" layoutY="20.0"
+                      maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                      prefHeight="25.0" prefWidth="150.0" promptText="Number of measurements:" unFocusColor="#05b9ff"
+                      StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="480.0" top="60.0"/>
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXTextField fx:id="stepField" focusColor="#0040ff" labelFloat="true" layoutX="900.0" layoutY="20.0"
+                      maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                      prefHeight="25.0" prefWidth="63.0" promptText="Step(cm):" unFocusColor="#05b9ff"
+                      AnchorPane.leftAnchor="900.0" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="200.0" top="10.0"/>
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXTextField fx:id="durationOfMeasurementField" focusColor="#0040ff" labelFloat="true" layoutX="888.0"
+                      layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                      minWidth="-Infinity" prefHeight="25.0" prefWidth="184.0"
+                      promptText="Duration of measurement(Second):" unFocusColor="#05b9ff"
+                      StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="280.0" top="60.0"/>
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXTextField fx:id="numberOfMeasurementsForGivenTimeField" focusColor="#0040ff" labelFloat="true"
+                      layoutX="827.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                      minWidth="-Infinity" prefHeight="25.0" prefWidth="223.0"
+                      promptText="Number of measurements for given time:" unFocusColor="#05b9ff"
+                      StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="40.0" top="60.0"/>
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXTextField fx:id="distanceFromCamerasToObjectField" focusColor="#0040ff" labelFloat="true" layoutX="827.0"
+                      layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                      minWidth="-Infinity" prefHeight="25.0" prefWidth="206.0"
+                      promptText="Start distance from cameras to object: " unFocusColor="#05b9ff"
+                      StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="425.0" top="10.0"/>
+            </StackPane.margin>
+        </JFXTextField>
+        <JFXButton layoutX="1131.0" layoutY="10.0" onAction="#setStartDistance" prefHeight="18.0" prefWidth="109.0"
+                   style="-fx-background-color: #3797ff;" text="Set start distance" textAlignment="CENTER"
+                   textFill="WHITE" wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="300.0" top="10.0"/>
+            </StackPane.margin>
+        </JFXButton>
+        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="90.0" prefWidth="637.0" text="None"
+               wrapText="true" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </StackPane.margin>
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="882.0" layoutY="20.0" onAction="#loadGraphs" prefHeight="18.0" prefWidth="109.0"
+                   style="-fx-background-color: #3797ff;" text="Load Graphs" textAlignment="CENTER" textFill="WHITE"
+                   wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="400.0" top="100.0"/>
+            </StackPane.margin>
+        </JFXButton>
+        <AreaChart fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                   prefHeight="598.0" prefWidth="1281.0" StackPane.alignment="TOP_LEFT">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+            <StackPane.margin>
+                <Insets top="130.0"/>
+            </StackPane.margin>
+        </AreaChart>
+        <JFXButton layoutX="782.0" layoutY="110.0" onAction="#saveGraphs" prefHeight="18.0" prefWidth="109.0"
+                   style="-fx-background-color: #3797ff;" text="Save Graphs" textAlignment="CENTER" textFill="WHITE"
+                   wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="200.0" top="100.0"/>
+            </StackPane.margin>
+        </JFXButton>
+    </children>
+</StackPane>

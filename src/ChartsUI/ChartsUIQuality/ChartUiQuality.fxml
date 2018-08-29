@@ -9,17 +9,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <StackPane fx:id="stackPane" prefHeight="733.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/9.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChartsUIQuality.ChartUIQualityController">
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChartsUI.ChartsUIQuality.ChartUIQualityController">
     <children>
-        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="90.0" prefWidth="637.0" text="None"
-               wrapText="true" StackPane.alignment="TOP_LEFT">
-            <StackPane.margin>
-                <Insets left="10.0"/>
-            </StackPane.margin>
-            <font>
-                <Font name="Arial" size="12.0"/>
-            </font>
-        </Label>
         <JFXButton fx:id="measurementButton" layoutX="1147.0" layoutY="20.0" onAction="#measurementBtn"
                    prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #3797ff;" text="Start Measuring"
                    textAlignment="CENTER" textFill="WHITE" wrapText="true" StackPane.alignment="TOP_RIGHT">
@@ -43,18 +34,6 @@
                 <Insets right="200.0" top="10.0"/>
             </StackPane.margin>
         </JFXTextField>
-        <AreaChart fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                   prefHeight="672.0" prefWidth="1281.0" StackPane.alignment="TOP_LEFT">
-            <xAxis>
-                <CategoryAxis side="BOTTOM"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT"/>
-            </yAxis>
-            <StackPane.margin>
-                <Insets top="90.0"/>
-            </StackPane.margin>
-        </AreaChart>
         <JFXTextField fx:id="durationOfMeasurementField" focusColor="#0040ff" labelFloat="true" layoutX="888.0"
                       layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                       minWidth="-Infinity" prefHeight="25.0" prefWidth="184.0"
@@ -87,6 +66,41 @@
                    textFill="WHITE" wrapText="true" StackPane.alignment="TOP_RIGHT">
             <StackPane.margin>
                 <Insets right="300.0" top="10.0"/>
+            </StackPane.margin>
+        </JFXButton>
+        <Label fx:id="infoTextLabel" layoutX="14.0" layoutY="5.0" prefHeight="90.0" prefWidth="637.0" text="None"
+               wrapText="true" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets left="10.0" top="10.0"/>
+            </StackPane.margin>
+            <font>
+                <Font name="Arial" size="12.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="882.0" layoutY="20.0" onAction="#loadGraphs" prefHeight="18.0" prefWidth="109.0"
+                   style="-fx-background-color: #3797ff;" text="Load Graphs" textAlignment="CENTER" textFill="WHITE"
+                   wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="400.0" top="100.0"/>
+            </StackPane.margin>
+        </JFXButton>
+        <AreaChart fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                   prefHeight="598.0" prefWidth="1281.0" StackPane.alignment="TOP_LEFT">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+            <StackPane.margin>
+                <Insets top="130.0"/>
+            </StackPane.margin>
+        </AreaChart>
+        <JFXButton layoutX="782.0" layoutY="110.0" onAction="#saveGraphs" prefHeight="18.0" prefWidth="109.0"
+                   style="-fx-background-color: #3797ff;" text="Save Graphs" textAlignment="CENTER" textFill="WHITE"
+                   wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets right="200.0" top="100.0"/>
             </StackPane.margin>
         </JFXButton>
     </children>

@@ -11,5 +11,6 @@
     <orderEntry type="library" name="opencv-341" level="project" />
     <orderEntry type="library" name="jzy3d-javafx-1.0.3-20180318.152746-1-javadoc" level="project" />
     <orderEntry type="library" name="org.jzy3d:jzy3d-api:1.0.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="project" />
   </component>
 </module>

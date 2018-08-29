@@ -1,6 +1,8 @@
 package Utils;
 
+import ChartsUI.ChartUiController;
 import javafx.application.Platform;
+
 
 public class Timer implements Runnable {
 
@@ -18,11 +20,12 @@ public class Timer implements Runnable {
         Timer.numberOfMeasurementsForGivenTime = numberOfMeasurementsForGivenTime;
     }
 
-    //TODO GIVE THIS PARAMETERS IN SETTINGS!
+
     private static int durationOfMeasurement = 5;
     private static int numberOfMeasurementsForGivenTime = 5;
 
-    public void addDot() {
+
+    public void addDotToChart() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -52,7 +55,6 @@ public class Timer implements Runnable {
 
         while(time<durationOfMeasurement*1000){
             if(time%(((double)durationOfMeasurement/(double) numberOfMeasurementsForGivenTime)*1000) == 0){
-                //TODO SOMETHING
                 coordinateCalculation();
             }
 
@@ -63,6 +65,6 @@ public class Timer implements Runnable {
             }
             time++;
         }
-        addDot();
+        addDotToChart();
     }
 }

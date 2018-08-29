@@ -16,6 +16,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Frame grabber class
+ */
 public class FrameGrabber implements Runnable {
 
     public VideoCapture getCapture() {
@@ -55,7 +58,10 @@ public class FrameGrabber implements Runnable {
         this.staffUpdatePeriod = staffUpdatePeriod;
     }
 
-    //update ImageView
+    /**
+     * to ImageView(Images from cameras)
+     * @param imageToShow
+     */
     public void toWindow(Image imageToShow) {
         Platform.runLater(new Runnable() {
             @Override
@@ -65,7 +71,10 @@ public class FrameGrabber implements Runnable {
         });
     }
 
-    //change Button Text
+    /**
+     * Changing text on button
+     * @param text
+     */
     public void toWindow(String text) {
         Platform.runLater(new Runnable() {
             @Override
@@ -75,7 +84,11 @@ public class FrameGrabber implements Runnable {
         });
     }
 
-    //message to Dialog Window
+    /**
+     * Send messages to Dialog window
+     * @param cause Bold text
+     * @param message
+     */
     public void toWindow(String cause, String message) {
         Platform.runLater(new Runnable() {
             @Override
@@ -85,7 +98,11 @@ public class FrameGrabber implements Runnable {
         });
     }
 
-    //update imageView in Mode 2
+    /**
+     * Updating morphs images
+     * @param cam
+     * @param imageToShow
+     */
     public void toWindow(String cam, Image imageToShow) {
         Platform.runLater(new Runnable() {
             @Override
@@ -95,6 +112,9 @@ public class FrameGrabber implements Runnable {
         });
     }
 
+    /**
+     * Camera video capture camera initialization
+     */
     public void init() {
 
         if (!this.cameraActive) {
@@ -148,11 +168,6 @@ public class FrameGrabber implements Runnable {
 
         }catch (IllegalArgumentException e){}
 
-    }
-
-    private Image getScaledImage(Image im, int w, int h) {
-
-        return null;
     }
 
     static public Mat getMorph() {
@@ -225,9 +240,6 @@ public class FrameGrabber implements Runnable {
                     // show the partial output
                     toWindow(String.valueOf(whichImageView) + "2", Utils.mat2Image(morphOutput));
 
-                    Image image = Utils.mat2Image(morphOutput);
-                    //System.out.println();
-
                     // find the objects contours and show them
                     frame = this.findAndDrawContours(morphOutput, frame);
 
@@ -258,6 +270,12 @@ public class FrameGrabber implements Runnable {
         return frame;
     }
 
+    /**
+     * Finding and drawing contours
+     * @param maskedImage
+     * @param frame
+     * @return
+     */
     private Mat findAndDrawContours(Mat maskedImage, Mat frame) {
         // init
         List<MatOfPoint> contours = new ArrayList<>();

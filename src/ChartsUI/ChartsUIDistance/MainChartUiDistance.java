@@ -1,9 +1,8 @@
-package ChartsUIDistance;
+package ChartsUI.ChartsUIDistance;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,9 +18,6 @@ public class MainChartUiDistance extends Application {
 
     public static void main(String[] args) {
 
-        //load openCv lib
-        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
         launch(args);
     }
 
@@ -31,7 +27,6 @@ public class MainChartUiDistance extends Application {
 
         //init window
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ChartUi");
 
         initWindow();
     }

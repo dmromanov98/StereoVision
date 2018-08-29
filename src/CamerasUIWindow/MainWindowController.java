@@ -1,9 +1,9 @@
 package CamerasUIWindow;
 
-import ChartsUIDistance.ChartUIDistanceController;
-import ChartsUIDistance.MainChartUiDistance;
-import ChartsUIQuality.ChartUIQualityController;
-import ChartsUIQuality.MainChartUiQuality;
+import ChartsUI.ChartsUIDistance.ChartUIDistanceController;
+import ChartsUI.ChartsUIDistance.MainChartUiDistance;
+import ChartsUI.ChartsUIQuality.ChartUIQualityController;
+import ChartsUI.ChartsUIQuality.MainChartUiQuality;
 import Utils.Test;
 import Utils.Utils;
 import com.jfoenix.controls.*;
@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
     private int widthOfVideo = 640;
+    private int heightOfVideo = 480;
 
     public int getWidthOfVideo() {
         return widthOfVideo;
@@ -41,8 +42,6 @@ public class MainWindowController implements Initializable {
     public void setHeightOfVideo(int heightOfVideo) {
         this.heightOfVideo = heightOfVideo;
     }
-
-    private int heightOfVideo = 480;
 
     @FXML
     private ImageView cameraOne; //id = 0
@@ -81,6 +80,10 @@ public class MainWindowController implements Initializable {
     @FXML
     private ImageView mode2Camera22;
 
+    public JFXTextField getStaffUpdatePeriodField() {
+        return staffUpdatePeriodField;
+    }
+
     @FXML
     private JFXTextField staffUpdatePeriodField;
 
@@ -93,6 +96,10 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private JFXTextField distanceBetweenCamerasField;
+
+    public JFXTextField getFocalLengthField() {
+        return focalLengthField;
+    }
 
     @FXML
     private JFXTextField focalLengthField;
@@ -414,14 +421,14 @@ public class MainWindowController implements Initializable {
 
 
     public void setDistanceBetweenCameras() {
-        if (Test.testOnNumber(distanceBetweenCamerasField.getText()))
+        if (Test.testOnDouble(distanceBetweenCamerasField.getText()))
             DistanceToTheObject.setDistanceBetweenCameras(Double.valueOf(distanceBetweenCamerasField.getText()));
         else
             dialogWindow("Distance between cameras", "MUST BE A NUMBER!",null);
     }
 
     public void setFocalLength() {
-        if (Test.testOnNumber(focalLengthField.getText()))
+        if (Test.testOnDouble(focalLengthField.getText()))
             DistanceToTheObject.setFocus(Double.valueOf(focalLengthField.getText()));
         else
             dialogWindow("Focal length", "MUST BE A NUMBER!",null);
@@ -481,7 +488,7 @@ public class MainWindowController implements Initializable {
     }
 
     public void serStaffUpdatePeriod() {
-        if (Test.testOnNumber(staffUpdatePeriodField.getText())) {
+        if (Test.testOnDouble(staffUpdatePeriodField.getText())) {
 
             if (grabbers[0] != null) {
                 grabbers[0].init();

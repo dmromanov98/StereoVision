@@ -4,7 +4,12 @@ import static java.lang.Double.valueOf;
 
 public class Test {
 
-    public static boolean testOnNumber(String string){
+    /***
+     * test string on double value
+     * @param string
+     * @return
+     */
+    public static boolean testOnDouble(String string){
         boolean res = false;
         try {
             double d = valueOf(string);
@@ -14,6 +19,11 @@ public class Test {
         return res;
     }
 
+    /***
+     * test string on double value
+     * @param string
+     * @return
+     */
     public static boolean testOnInteger(String string){
         boolean res = false;
         try {

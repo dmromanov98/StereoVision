@@ -1,4 +1,4 @@
-package Utils;
+package ChartsUI;
 
 import javafx.fxml.Initializable;
 
@@ -8,5 +8,7 @@ public interface ChartUiController extends Initializable {
     void measurementBtn();
     void addDotToSeries();
     void setStartDistance();
+    void loadGraphs();
+    void saveGraphs();
 
 }
