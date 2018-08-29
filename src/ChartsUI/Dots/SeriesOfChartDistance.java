@@ -4,10 +4,13 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class DotsOfChartDistance implements Dots {
+public class SeriesOfChartDistance implements Dots {
 
-    private ArrayList<Series> accuracyDistanceBetweenCameras;
+    private ArrayList<SeriesOfDots> accuracyDistanceBetweenCameras;
+
+
 
     /**
      *
@@ -29,15 +32,14 @@ public class DotsOfChartDistance implements Dots {
 
    // private boolean writeParameters = true;
 
-    public DotsOfChartDistance() {
+    public SeriesOfChartDistance() {
         accuracyDistanceBetweenCameras = new ArrayList<>();
         parameters = new ArrayList<>();
     }
 
     @Override
     public void setNameOfNewSeries(String name) {
-        accuracyDistanceBetweenCameras.add(new Series());
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).setName(name);
+
     }
 
     public void addParameters(String[] strings){
@@ -46,27 +48,41 @@ public class DotsOfChartDistance implements Dots {
 
     @Override
     public void addDot(double x, double y) {
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).getData().add(new XYChart.Data(x, y));
+
     }
 
-    @Override
-    public void addDot(XYChart.Data dot) {
-        accuracyDistanceBetweenCameras.get(accuracyDistanceBetweenCameras.size() - 1).getData().add(dot);
-    }
-
-    @Override
-    public void addSeries(Series series) {
+    public void addSeries(SeriesOfDots series){
         accuracyDistanceBetweenCameras.add(series);
     }
 
     @Override
+    public void addDot(XYChart.Data dot) {
+
+    }
+
+    @Override
+    public void addSeries(Series series) {
+
+    }
+
+    @Override
     public void setSeries(ArrayList<Series> series) {
-        accuracyDistanceBetweenCameras = series;
+
     }
 
     @Override
     public ArrayList<Series> getSeries() {
-        return accuracyDistanceBetweenCameras;
+        List<Series> series = new ArrayList<>();
+        for(SeriesOfDots sod: accuracyDistanceBetweenCameras){
+            Series series1 = new Series();
+            for(String dots:sod.getDots()){
+                String[] strings = dots.split(" ");
+                series1.setName(sod.getNameOfSeries());
+                series1.getData().add(Integer.parseInt(strings[0]),strings[1]);
+                series.add(series1);
+            }
+        }
+        return (ArrayList<Series>) series;
     }
 
 

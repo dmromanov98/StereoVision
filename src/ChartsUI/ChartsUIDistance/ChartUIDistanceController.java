@@ -1,13 +1,14 @@
 package ChartsUI.ChartsUIDistance;
 
 import CamerasUIWindow.MainWindowController;
-import ChartsUI.Dots.DotsOfChartDistance;
 import ChartsUI.ChartUiController;
 import ChartsUI.Dots.Gson.Serialization;
+import ChartsUI.Dots.SeriesOfChartDistance;
+import ChartsUI.Dots.SeriesOfDots;
 import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
@@ -81,7 +82,8 @@ public class ChartUIDistanceController implements ChartUiController {
     private double distanceBetweenCameras;
     private double accuracy;
     private double coordsResult = 0;
-    DotsOfChartDistance dotsOfChartDistance = new DotsOfChartDistance();
+    private SeriesOfChartDistance dotsOfChartDistance = new SeriesOfChartDistance();
+    private SeriesOfDots sod;
 
     @Override
     public void addDotToSeries() {
@@ -94,7 +96,9 @@ public class ChartUIDistanceController implements ChartUiController {
 
         series.get(series.size() - 1).getData().add(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
-        dotsOfChartDistance.addSeries(series.get(series.size() - 1));
+        sod.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
+
+        //dotsOfChartDistance.addSeries(series.get(series.size() - 1));
 
 
 
@@ -120,6 +124,7 @@ public class ChartUIDistanceController implements ChartUiController {
         infoTextLabel.setText("Now you must set distance from cameras to object = " + startDistance + " and click Start Measuring");
 
         if (colMeasurement == 0) {
+            dotsOfChartDistance.addSeries(sod);
             startDistance = 15;
             infoTextLabel.setText("Set the distance between the cameras in the main window, enter the measuring " +
                     "step in the current window (the distance to which you will move the object)" +
@@ -157,6 +162,9 @@ public class ChartUIDistanceController implements ChartUiController {
                         distanceBetweenCameras = Double.valueOf(mwc.getDistanceBetweenCamerasField().getText());
 
                         series.get(series.size() - 1).setName(String.valueOf(distanceBetweenCameras) + " cm");
+
+                        sod = new SeriesOfDots(String.valueOf(distanceBetweenCameras) + " cm");
+
                         chart.getData().add(series.get(series.size() - 1));
 
                         step = Integer.valueOf(stepField.getText());
@@ -215,6 +223,6 @@ public class ChartUIDistanceController implements ChartUiController {
 
     @Override
     public void saveGraphs() {
-        Serialization.serialize(dotsOfChartDistance);
+        System.out.println(Serialization.serialize(dotsOfChartDistance));
     }
 }
