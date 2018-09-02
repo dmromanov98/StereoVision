@@ -1,19 +1,21 @@
 package ChartsUI.ChartsUIQuality;
 
 import CamerasUIWindow.MainWindowController;
-import ChartsUI.Dots.DotsOfChartQuality;
 import ChartsUI.ChartUiController;
+import ChartsUI.Dots.Gson.Deserialization;
 import ChartsUI.Dots.Gson.Serialization;
+import ChartsUI.Dots.SeriesOfChartQuality;
+import ChartsUI.Dots.SeriesOfDots;
 import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -83,7 +85,8 @@ public class ChartUIQualityController implements ChartUiController {
     private String qualityOfVideo;
     private double accuracy;
     private double cordsResult = 0;
-    DotsOfChartQuality dotsOfChartQuality = new DotsOfChartQuality();
+    private SeriesOfChartQuality seriesOfChartQuality = new SeriesOfChartQuality();
+    private SeriesOfDots seriesOfDots;
 
     @Override
     public void addDotToSeries() {
@@ -95,24 +98,24 @@ public class ChartUIQualityController implements ChartUiController {
 
         series.get(series.size() - 1).getData().add(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
-        dotsOfChartQuality.addSeries(series.get(series.size() - 1));
+        seriesOfDots.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
         String[] parameters = new String[7];
-        parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue())+" "+String.valueOf(mwc.getScrollHueStop().getValue());
-        parameters[1] = String.valueOf(mwc.getScrollSaturationStart().getValue())+" "+String.valueOf(mwc.getScrollSaturationStop().getValue());
-        parameters[2] = String.valueOf(mwc.getScrollValueStart().getValue())+" "+String.valueOf(mwc.getScrollValueStop().getValue());
+        parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue()) + " " + String.valueOf(mwc.getScrollHueStop().getValue());
+        parameters[1] = String.valueOf(mwc.getScrollSaturationStart().getValue()) + " " + String.valueOf(mwc.getScrollSaturationStop().getValue());
+        parameters[2] = String.valueOf(mwc.getScrollValueStart().getValue()) + " " + String.valueOf(mwc.getScrollValueStop().getValue());
         parameters[3] = mwc.getDistanceBetweenCamerasField().getText();
         parameters[4] = mwc.getFocalLengthField().getText();
-        parameters[4] = qualityOfVideo;
+        parameters[5] = qualityOfVideo;
         parameters[6] = mwc.getStaffUpdatePeriodField().getText();
 
-        dotsOfChartQuality.addParameters(parameters);
-
+        seriesOfDots.addParameters(parameters);
 
         startDistance = startDistance + step;
         infoTextLabel.setText("Now you must set distance from cameras to object = " + startDistance + " and click Start Measuring");
 
         if (colMeasurement == 0) {
+            seriesOfChartQuality.addSeries(seriesOfDots);
             startDistance = 15;
             infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
                     "step in the current window (the distance to which you will move the object)" +
@@ -153,10 +156,10 @@ public class ChartUIQualityController implements ChartUiController {
                         else
                             qualityOfVideo = "480p";
 
+                        seriesOfDots = new SeriesOfDots(qualityOfVideo);
 
 
-
-                        series.get(series.size() - 1).setName(String.valueOf(qualityOfVideo));
+                        series.get(series.size() - 1).setName(qualityOfVideo);
                         chart.getData().add(series.get(series.size() - 1));
 
                         step = Integer.valueOf(stepField.getText());
@@ -180,16 +183,10 @@ public class ChartUIQualityController implements ChartUiController {
 
         }
 
-        if (colMeasurement != 0) {
-            Thread timer = new Thread(new Timer());
-
-            timer.start();
-            infoTextLabel.setText("Please wait...");
-
-            colMeasurement--;
-        }
+        colMeasurement = Timer.startingTimer(colMeasurement, infoTextLabel);
 
     }
+
 
     @Override
     public void setStartDistance() {
@@ -209,11 +206,28 @@ public class ChartUIQualityController implements ChartUiController {
                     "Start distance from cameras to object must be a number > 0", stackPane);
         }
     }
+
     @Override
     public void loadGraphs() {
+        JButton open = new JButton();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new java.io.File("C:/"));
+        fileChooser.setDialogTitle("Choose quality chart file");
+        fileChooser.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
+        if (fileChooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
+        }
+
+        String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+
+        seriesOfChartQuality = Deserialization.deserializeQuality(fileName);
+
+        for(XYChart.Series s : seriesOfChartQuality.getSeries())
+            chart.getData().add(s);
+
     }
+
     @Override
     public void saveGraphs() {
-        Serialization.serialize(dotsOfChartQuality);
+        mwc.dialogWindow("Saving...", Serialization.serialize(seriesOfChartQuality), stackPane);
     }
 }

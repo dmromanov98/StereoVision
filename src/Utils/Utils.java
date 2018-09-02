@@ -5,8 +5,12 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
+import ChartsUI.Dots.SeriesOfDots;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.chart.XYChart;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
@@ -29,6 +33,32 @@ import static org.opencv.core.CvType.CV_8UC3;
  * @since 1.0
  */
 public final class Utils {
+
+    /**
+     * Converting List<SeriesOfDots> to List<XYChart.Series>
+     *
+     * @param accuracy List<SeriesOfDots>
+     * @return List<XYChart.Series>
+     */
+    public static List<XYChart.Series> StringArrayToSeries(List<SeriesOfDots> accuracy) {
+        List<XYChart.Series> series = new ArrayList<>();
+        for (SeriesOfDots sod : accuracy) {
+            XYChart.Series series1 = new XYChart.Series();
+            for (String dots : sod.getDots()) {
+                String[] strings = dots.split(" ");
+                //System.out.println(strings[0]+" "+strings[1]+" "+sod.getNameOfSeries());
+                series1.setName(sod.getNameOfSeries());
+                //System.out.println(series1.getName());
+               // series1.getData().add((int) Double.parseDouble(strings[0]), strings[1]);
+                series1.getData().add(new XYChart.Data(strings[0], Double.valueOf(strings[1])));
+
+            }
+            series.add(series1);
+        }
+        return series;
+    }
+
+
     /**
      * Convert a Mat object (OpenCV) in the corresponding Image for JavaFX
      *
@@ -99,7 +129,7 @@ public final class Utils {
                 newPixel[1] = (int) ((mat.get(i, j)[1] + mat.get(i + 1, j)[1] + mat.get(i, j + 1)[1] + mat.get(i + 1, j + 1)[1]) / (hStep + wStep));
                 newPixel[2] = (int) ((mat.get(i, j)[2] + mat.get(i + 1, j)[2] + mat.get(i, j + 1)[2] + mat.get(i + 1, j + 1)[2]) / (hStep + wStep));
                 newMat.put(iNewMat, jNewMat, newPixel);
-                System.out.println(newPixel[0]+" "+newPixel[1]+" "+newPixel[2]);
+                System.out.println(newPixel[0] + " " + newPixel[1] + " " + newPixel[2]);
                 //System.out.println(mat.get(i,j)[0]+" "+mat.get(i,j)[1]+" "+mat.get(i,j)[2]);
                 //newMat[iNewMat][jNewMat] = (mat.get(i,j)+mat.get(i+1,j)+mat.get(i,j+1)+mat.get(i+1,j+1))/(hStep+wStep);
 
@@ -113,7 +143,7 @@ public final class Utils {
     public static Image getScaledImage(Image img, int width, int height) {
 
         BufferedImage bufImage = SwingFXUtils.fromFXImage(img, null);
-        java.awt.Image swImage = bufImage.getScaledInstance(width,height,1);
+        java.awt.Image swImage = bufImage.getScaledInstance(width, height, 1);
         java.awt.Image tmp = swImage.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 
         BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -126,36 +156,30 @@ public final class Utils {
         return res;
     }
 
-    public static Mat bufferedImage2Mat(BufferedImage in)
-    {
+    public static Mat bufferedImage2Mat(BufferedImage in) {
         Mat out;
         byte[] data;
         int r, g, b;
         int height = in.getHeight();
         int width = in.getWidth();
-        if(in.getType() == BufferedImage.TYPE_INT_RGB || in.getType() == BufferedImage.TYPE_INT_ARGB)
-        {
+        if (in.getType() == BufferedImage.TYPE_INT_RGB || in.getType() == BufferedImage.TYPE_INT_ARGB) {
             out = new Mat(height, width, CvType.CV_8UC3);
-            data = new byte[height * width * (int)out.elemSize()];
+            data = new byte[height * width * (int) out.elemSize()];
             int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
-            for(int i = 0; i < dataBuff.length; i++)
-            {
-                data[i*3 + 2] = (byte) ((dataBuff[i] >> 16) & 0xFF);
-                data[i*3 + 1] = (byte) ((dataBuff[i] >> 8) & 0xFF);
-                data[i*3] = (byte) ((dataBuff[i] >> 0) & 0xFF);
+            for (int i = 0; i < dataBuff.length; i++) {
+                data[i * 3 + 2] = (byte) ((dataBuff[i] >> 16) & 0xFF);
+                data[i * 3 + 1] = (byte) ((dataBuff[i] >> 8) & 0xFF);
+                data[i * 3] = (byte) ((dataBuff[i] >> 0) & 0xFF);
             }
-        }
-        else
-        {
+        } else {
             out = new Mat(height, width, CvType.CV_8UC1);
-            data = new byte[height * width * (int)out.elemSize()];
+            data = new byte[height * width * (int) out.elemSize()];
             int[] dataBuff = in.getRGB(0, 0, width, height, null, 0, width);
-            for(int i = 0; i < dataBuff.length; i++)
-            {
+            for (int i = 0; i < dataBuff.length; i++) {
                 r = (byte) ((dataBuff[i] >> 16) & 0xFF);
                 g = (byte) ((dataBuff[i] >> 8) & 0xFF);
                 b = (byte) ((dataBuff[i] >> 0) & 0xFF);
-                data[i] = (byte)((0.21 * r) + (0.71 * g) + (0.07 * b)); //luminosity
+                data[i] = (byte) ((0.21 * r) + (0.71 * g) + (0.07 * b)); //luminosity
             }
         }
         out.put(0, 0, data);
@@ -164,7 +188,7 @@ public final class Utils {
 
     public static String getOpenCvResource(Class<?> clazz, String path) {
         try {
-            return Paths.get( clazz.getResource(path).toURI()).toString();
+            return Paths.get(clazz.getResource(path).toURI()).toString();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -208,8 +232,7 @@ public final class Utils {
         try {
             g.setComposite(AlphaComposite.Src);
             g.drawImage(original, 0, 0, null);
-        }
-        finally {
+        } finally {
             g.dispose();
         }
 

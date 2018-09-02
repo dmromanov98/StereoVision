@@ -3,6 +3,8 @@ package Utils;
 import ChartsUI.ChartUiController;
 import javafx.application.Platform;
 
+import javafx.scene.control.Label;
+
 
 public class Timer implements Runnable {
 
@@ -24,6 +26,17 @@ public class Timer implements Runnable {
     private static int durationOfMeasurement = 5;
     private static int numberOfMeasurementsForGivenTime = 5;
 
+    public static int startingTimer(int colMeasurement, Label infoTextLabel){
+        if (colMeasurement != 0) {
+            Thread timer = new Thread(new Timer());
+
+            timer.start();
+            infoTextLabel.setText("Please wait...");
+
+            return colMeasurement-1;
+        }else
+            return 0;
+    }
 
     public void addDotToChart() {
         Platform.runLater(new Runnable() {

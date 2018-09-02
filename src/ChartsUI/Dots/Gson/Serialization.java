@@ -1,14 +1,11 @@
 package ChartsUI.Dots.Gson;
 
 import ChartsUI.Dots.SeriesOfChartDistance;
-import ChartsUI.Dots.DotsOfChartQuality;
+import ChartsUI.Dots.SeriesOfChartQuality;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,28 +34,28 @@ public class Serialization {
     public static String serialize(SeriesOfChartDistance sofcd) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String result = gson.toJson(sofcd);
-        return creatingPathForFile(result, "DotsOfChartDistanceGraph");
+        return creatingPathForFile(result, "D");
     }
 
     /**
-     * @param dofcq    DotsOfChartQuality class which we will write to gson file
+     * @param cofcq    DotsOfChartQuality class which we will write to gson file
      * @param filePath name of file to which we want to save
      * @return string param,Which store result of creating gson file
      */
-    public static String serialize(DotsOfChartQuality dofcq, String filePath) {
+    public static String serialize(SeriesOfChartQuality cofcq, String filePath) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String result = gson.toJson(dofcq);
+        String result = gson.toJson(cofcq);
         return writeToFile(result, filePath);
     }
 
     /**
-     * @param dofcq DotsOfChartQuality class which we will write to gson file
+     * @param cofcq DotsOfChartQuality class which we will write to gson file
      * @return string param,Which store result of creating gson file
      */
-    public static String serialize(DotsOfChartQuality dofcq) {
+    public static String serialize(SeriesOfChartQuality cofcq) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String result = gson.toJson(dofcq);
-        return creatingPathForFile(result, "DotsOfChartQualityGraph");
+        String result = gson.toJson(cofcq);
+        return creatingPathForFile(result, "Q");
     }
 
     private static String creatingPathForFile(String gson, String whichClass) {
@@ -71,20 +68,23 @@ public class Serialization {
             strings.add(f.getName());
         }
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date date = new Date();
 
-        path = whichClass +"("+ dateFormat.format(date)+")";
+        //System.out.println(dateFormat.format(date));
+
+        path = whichClass + "(" + dateFormat.format(date) + ")";
         String path1 = path;
+
         for (int i = 0; i < 100; i++) {
-            if (!strings.contains(path1)) {
+            if (!strings.contains(path1+".json")) {
                 break;
             } else {
                 path1 = path + "(" + i + ")";
             }
         }
 
-        return writeToFile(gson, defaultPath + "\\" + path1+".json");
+        return writeToFile(gson, defaultPath+"\\"+path1 + ".json");
     }
 
 
@@ -98,13 +98,20 @@ public class Serialization {
     private static String writeToFile(String gson, String path) {
         BufferedWriter writer = null;
         try {
+
+            System.out.println(path);
             writer = new BufferedWriter(new FileWriter(path));
             writer.write(gson);
-            writer.close();
+
 
             return "Gson file successfully created in " + path;
         } catch (IOException e) {
+            e.printStackTrace();
             return "IOException Error writing to file " + e.getMessage();
+        } finally {
+            try {
+                writer.close();
+            } catch (Exception ex) {/*ignore*/}
         }
     }
 
