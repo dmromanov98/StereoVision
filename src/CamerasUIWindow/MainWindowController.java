@@ -60,10 +60,62 @@ public class MainWindowController implements Initializable {
     @FXML
     private JFXSlider scrollHueStop;
 
+    public JFXCheckBox getCheckBoxAlgorithmOne() {
+        return checkBoxAlgorithmOne;
+    }
+
     @FXML
     private JFXSlider scrollSaturationStart;
     @FXML
     private JFXSlider scrollSaturationStop;
+
+    public void setScrollHueStart(JFXSlider scrollHueStart) {
+        this.scrollHueStart = scrollHueStart;
+    }
+
+    public void setScrollHueStop(JFXSlider scrollHueStop) {
+        this.scrollHueStop = scrollHueStop;
+    }
+
+    public void setScrollSaturationStart(JFXSlider scrollSaturationStart) {
+        this.scrollSaturationStart = scrollSaturationStart;
+    }
+
+    public void setScrollSaturationStop(JFXSlider scrollSaturationStop) {
+        this.scrollSaturationStop = scrollSaturationStop;
+    }
+
+    public void setScrollValueStart(JFXSlider scrollValueStart) {
+        this.scrollValueStart = scrollValueStart;
+    }
+
+    public void setScrollValueStop(JFXSlider scrollValueStop) {
+        this.scrollValueStop = scrollValueStop;
+    }
+
+    public void setStaffUpdatePeriodField(JFXTextField staffUpdatePeriodField) {
+        this.staffUpdatePeriodField = staffUpdatePeriodField;
+    }
+
+    public void setDistanceBetweenCamerasField(JFXTextField distanceBetweenCamerasField) {
+        this.distanceBetweenCamerasField = distanceBetweenCamerasField;
+    }
+
+    public void setFocalLengthField(JFXTextField focalLengthField) {
+        this.focalLengthField = focalLengthField;
+    }
+
+    public void setCheckBoxAlgorithmOne(JFXCheckBox checkBoxAlgorithmOne) {
+        this.checkBoxAlgorithmOne = checkBoxAlgorithmOne;
+    }
+
+    public void setCheckBoxAlgorithmTwo(JFXCheckBox checkBoxAlgorithmTwo) {
+        this.checkBoxAlgorithmTwo = checkBoxAlgorithmTwo;
+    }
+
+    public void setQualityComboBox(JFXComboBox<String> qualityComboBox) {
+        this.qualityComboBox = qualityComboBox;
+    }
 
     @FXML
     private JFXSlider scrollValueStart;
@@ -517,6 +569,35 @@ public class MainWindowController implements Initializable {
         MainChartUiQuality.initWindow();
     }
 
-    public void drawAccuracyStaffUpdate() {
+    public void loadParameters(String[] parameters) {
+        double startValue;
+        double stopValue;
+        startValue = Double.valueOf(parameters[0].split(" ")[0]);
+        stopValue = Double.valueOf(parameters[0].split(" ")[1]);
+        scrollHueStart.setValue(startValue);
+        scrollHueStop.setValue(stopValue);
+        startValue = Double.valueOf(parameters[1].split(" ")[0]);
+        stopValue = Double.valueOf(parameters[1].split(" ")[1]);
+        scrollSaturationStart.setValue(startValue);
+        scrollSaturationStop.setValue(stopValue);
+        startValue = Double.valueOf(parameters[2].split(" ")[0]);
+        stopValue = Double.valueOf(parameters[2].split(" ")[1]);
+        scrollValueStart.setValue(startValue);
+        scrollValueStop.setValue(stopValue);
+
+        distanceBetweenCamerasField.setText(parameters[3]);
+        focalLengthField.setText(parameters[4]);
+        //TODO: Fix It!
+        qualityComboBox.setPromptText(parameters[5]);
+        staffUpdatePeriodField.setText(parameters[6]);
+
+        if(parameters[7].equals("1")){
+            checkBoxAlgorithmOne.setSelected(true);
+            checkBoxAlgorithmTwo.setSelected(false);
+        }else{
+            checkBoxAlgorithmOne.setSelected(false);
+            checkBoxAlgorithmTwo.setSelected(true);
+        }
+
     }
 }

@@ -8,6 +8,10 @@ import java.util.List;
 
 public class SeriesOfChartDistance implements ChartsUI.Dots.Series {
 
+    public List<SeriesOfDots> getAccuracyDistanceBetweenCameras() {
+        return accuracyDistanceBetweenCameras;
+    }
+
     private List<SeriesOfDots> accuracyDistanceBetweenCameras;
     
     public SeriesOfChartDistance() {
@@ -16,8 +20,8 @@ public class SeriesOfChartDistance implements ChartsUI.Dots.Series {
 
 
     @Override
-    public ArrayList<Series> getSeries() {
-        return (ArrayList<Series>) Utils.StringArrayToSeries(accuracyDistanceBetweenCameras);
+    public List<Series> getSeries() {
+        return Utils.StringArrayToSeries(accuracyDistanceBetweenCameras);
     }
 
     @Override

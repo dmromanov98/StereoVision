@@ -2,31 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e5ae99b-45f7-40d1-83b7-b5859f00b03e" name="Default" comment="Distance Measurement">
-      <change afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Deserialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/Series.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/CamerasUIWindow/MainWindowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/ChartsUIDistance/ChartUIDistanceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/ChartsUIDistance/ChartUIDistanceController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/ChartsUIQuality/ChartUIQualityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/ChartsUIQuality/ChartUIQualityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/Dots.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/DotsOfChartDistance.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/DotsOfChartQuality.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/Gson/Serialization.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/Gson/Serialization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/Series.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/Series.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfChartDistance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfChartDistance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfChartQuality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfChartQuality.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfDots.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/ChartsUI/Dots/SeriesOfDots.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/Utils/Timer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StereoVision/Utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StereoVision/Utils/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/Dots.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/DotsOfChartQuality.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Serialization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/Series.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/Series.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,18 +57,19 @@
           <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.23" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="3" />
-          <entry key="JAVA" value="49" />
-          <entry key="JSON" value="8" />
+          <entry key="JAVA" value="62" />
+          <entry key="JSON" value="10" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="6" />
         </counts>
@@ -84,7 +79,7 @@
         <counts>
           <entry key="dummy" value="17" />
           <entry key="fxml" value="91" />
-          <entry key="java" value="4991" />
+          <entry key="java" value="6165" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -93,14 +88,14 @@
           <entry key="19" value="1" />
           <entry key="2018_19" value="1" />
           <entry key="fxml" value="6" />
-          <entry key="java" value="49" />
+          <entry key="java" value="62" />
           <entry key="jpg" value="3" />
-          <entry key="json" value="7" />
+          <entry key="json" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4991" />
+          <entry key="JAVA" value="6165" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="XML" value="91" />
         </counts>
@@ -156,120 +151,95 @@
     <favorites_list name="StereoVision" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-88">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Serialization.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Deserialization.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-258">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="229" column="38" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/List.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.controls/javafx/scene/chart/XYChart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="1583" column="76" selection-start-line="1583" selection-start-column="76" selection-end-line="1583" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/binding/ObjectExpression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-              <folding>
-                <element signature="e#968#969#0" expanded="true" />
-                <element signature="e#996#997#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/value/ObservableObjectValue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="223" column="64" selection-start-line="223" selection-start-column="64" selection-end-line="223" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utils/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.4130031">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="440">
+                  <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#343#344#0" expanded="true" />
+                    <element signature="e#376#377#0" expanded="true" />
+                    <element signature="e#425#426#0" expanded="true" />
+                    <element signature="e#458#459#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="439">
+                  <caret line="600" lean-forward="true" selection-start-line="600" selection-end-line="600" />
+                  <folding>
+                    <element signature="e#1618#1619#0" expanded="true" />
+                    <element signature="e#1661#1662#0" expanded="true" />
+                    <element signature="e#1739#1740#0" expanded="true" />
+                    <element signature="e#1791#1792#0" expanded="true" />
+                    <element signature="e#1852#1853#0" expanded="true" />
+                    <element signature="e#1902#1903#0" expanded="true" />
+                    <element signature="e#2251#2252#0" expanded="true" />
+                    <element signature="e#2307#2308#0" expanded="true" />
+                    <element signature="e#2372#2373#0" expanded="true" />
+                    <element signature="e#2426#2427#0" expanded="true" />
+                    <element signature="e#2816#2817#0" expanded="true" />
+                    <element signature="e#2872#2873#0" expanded="true" />
+                    <element signature="e#3229#3230#0" expanded="true" />
+                    <element signature="e#3283#3284#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="324">
+                  <caret line="134" column="31" selection-start-line="134" selection-start-column="31" selection-end-line="134" selection-end-column="31" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="412">
+                  <caret line="126" column="12" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="31" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Utils/Timer.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="462">
+                  <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+                  <folding>
+                    <element signature="e#801#802#0" expanded="true" />
+                    <element signature="e#864#865#0" expanded="true" />
+                    <element signature="e#919#920#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -287,6 +257,7 @@
       <find>startShowingDistance</find>
       <find>getHeightOfVideo</find>
       <find>distance</find>
+      <find>initialize</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -298,7 +269,6 @@
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/Test.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/DistanceThread.java" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWIndow.java" />
-        <option value="$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java" />
         <option value="$PROJECT_DIR$/src/ChartUI/ChartUi.fxml" />
         <option value="$PROJECT_DIR$/src/ChartUI/MainTest.java" />
         <option value="$PROJECT_DIR$/src/ChartUI/ChartUIConroller.java" />
@@ -313,21 +283,23 @@
         <option value="$PROJECT_DIR$/src/ChartsUIDistance/ChartUi.fxml" />
         <option value="$PROJECT_DIR$/src/CamerasUIWindow/GUIs.java" />
         <option value="$PROJECT_DIR$/src/ChartsUIDistance/MainChartUiDistance.java" />
-        <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/Dots/DotsOfChartDistance.java" />
         <option value="$PROJECT_DIR$/src/ChartsUIDistance/ChartUIConroller.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/DotsOfChartDistance.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/DotsOfChartQuality.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/Dots.java" />
-        <option value="$PROJECT_DIR$/src/Utils/Timer.java" />
-        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/Series.java" />
-        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java" />
-        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Serialization.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Deserialization.java" />
-        <option value="$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java" />
         <option value="$PROJECT_DIR$/src/Utils/Utils.java" />
+        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java" />
+        <option value="$PROJECT_DIR$/src/CamerasUIWindow/LoadParameters.java" />
+        <option value="$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java" />
+        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java" />
+        <option value="$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/Utils/Timer.java" />
+        <option value="$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java" />
+        <option value="$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java" />
         <option value="$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java" />
       </list>
     </option>
@@ -355,9 +327,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -379,14 +348,13 @@
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
               <item name="StereoVision" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ChartsUI" type="462c0819:PsiDirectoryNode" />
+              <item name="CamerasUIWindow" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
               <item name="StereoVision" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ChartsUI" type="462c0819:PsiDirectoryNode" />
-              <item name="ChartsUIDistance" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
@@ -406,14 +374,15 @@
               <item name="StereoVision" type="b2602c69:ProjectViewProjectNode" />
               <item name="StereoVision" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ChartsUI" type="462c0819:PsiDirectoryNode" />
-              <item name="Dots" type="462c0819:PsiDirectoryNode" />
-              <item name="Gson" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -423,7 +392,7 @@
     <property name="ToolWindowEvent Log.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535911712224" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536002317094" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ArchiveComparator" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -582,6 +551,7 @@
       <workItem from="1535556674942" duration="5341000" />
       <workItem from="1535645414018" duration="114000" />
       <workItem from="1535900236938" duration="6938000" />
+      <workItem from="1535995854850" duration="6453000" />
     </task>
     <task id="LOCAL-00001" summary="Distance Measurement">
       <created>1523638474134</created>
@@ -615,7 +585,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93393000" />
+    <option name="totallyTimeSpent" value="99846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -630,17 +600,17 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6202749" visible="true" weight="0.21428572" />
-      <window_info id="Structure" order="1" sideWeight="0.3797251" side_tool="true" weight="0.21428572" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6051873" visible="true" weight="0.1391258" />
+      <window_info id="Structure" order="1" sideWeight="0.39481267" side_tool="true" visible="true" weight="0.1391258" />
       <window_info id="Learn" order="2" weight="0.32995737" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" sideWeight="0.3797251" side_tool="true" visible="true" weight="0.21428572" />
+      <window_info id="Favorites" order="7" sideWeight="0.3797251" side_tool="true" weight="0.21428572" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32939914" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7121535" visible="true" weight="0.37553647" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7121535" visible="true" weight="0.2553648" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914164" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -650,7 +620,6 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28784648" side_tool="true" weight="0.10629371" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49733475" weight="0.32939914" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32995737" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -660,6 +629,7 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Database" order="7" weight="0.3295302" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32942432" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -700,27 +670,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Distance Measurement" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/libs/opencv-341.jar!/org/opencv/videoio/VideoCapture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="275" column="34" selection-start-line="275" selection-start-column="34" selection-end-line="275" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jfoenix-9.0.1.jar!/com/jfoenix/controls/JFXComboBox.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1628">
-          <caret line="118" column="38" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/opencv-341.jar!/org/opencv/core/Mat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20768">
-          <caret line="946" column="15" selection-start-line="946" selection-start-column="15" selection-end-line="946" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.graphics/javafx/scene/image/Image.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.desktop/java/awt/Image.java" />
     <entry file="file://$PROJECT_DIR$/src/WorkWithImages/CompareImagesController.java">
@@ -748,12 +697,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="174" column="32" selection-start-line="174" selection-start-column="32" selection-end-line="177" selection-end-column="76" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChartsUIDistance/ChartUi.fxml" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/lang/Thread.java" />
@@ -779,29 +728,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="225" column="41" lean-forward="true" selection-start-line="225" selection-start-column="41" selection-end-line="225" selection-end-column="41" />
-          <folding>
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dots/DotsOfCharts.java" />
     <entry file="file://$PROJECT_DIR$/src/Dots/DotsOfChartDistance.java" />
     <entry file="file://$PROJECT_DIR$/src/ChartsUIDistance/ChartUIConroller.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.base/javafx/beans/property/ObjectProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.controls/javafx/scene/chart/XYChart.java" />
-    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9944">
-          <caret line="508" column="9" selection-start-line="508" selection-start-column="9" selection-end-line="508" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar!/com/google/gson/GsonBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -813,13 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/Timer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -835,20 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13288">
           <caret line="660" column="20" selection-start-line="660" selection-start-column="20" selection-end-line="660" selection-end-column="20" />
-          <folding>
-            <element signature="e#26691#26692#0" expanded="true" />
-            <element signature="e#26722#26723#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -859,69 +769,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GraphsSaves/D(02.09.2018).json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2172" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/value/ObservableObjectValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/binding/ObjectExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding>
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.controls/javafx/scene/chart/XYChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="1583" column="76" selection-start-line="1583" selection-start-column="76" selection-end-line="1583" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Serialization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
+        <state relative-caret-position="1518">
           <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -931,18 +786,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/Gson/Deserialization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-258">
+        <state relative-caret-position="88">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="223" column="64" selection-start-line="223" selection-start-column="64" selection-end-line="223" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -951,15 +796,163 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
+        <state relative-caret-position="5280">
           <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.controls/javafx/scene/chart/XYChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31768">
+          <caret line="1583" column="76" selection-start-line="1583" selection-start-column="76" selection-end-line="1583" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/binding/ObjectExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+          <folding>
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.base/javafx/beans/value/ObservableObjectValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphsSaves/D(03.09.2018).json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphsSaves/D(03.09.2018)(0).json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-916" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/LoadParameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartQuality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/FrameGrabber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+          <folding>
+            <element signature="e#2717#2718#0" expanded="true" />
+            <element signature="e#2785#2786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfChartDistance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CamerasUIWindow/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="600" lean-forward="true" selection-start-line="600" selection-end-line="600" />
+          <folding>
+            <element signature="e#1618#1619#0" expanded="true" />
+            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#1902#1903#0" expanded="true" />
+            <element signature="e#2251#2252#0" expanded="true" />
+            <element signature="e#2307#2308#0" expanded="true" />
+            <element signature="e#2372#2373#0" expanded="true" />
+            <element signature="e#2426#2427#0" expanded="true" />
+            <element signature="e#2816#2817#0" expanded="true" />
+            <element signature="e#2872#2873#0" expanded="true" />
+            <element signature="e#3229#3230#0" expanded="true" />
+            <element signature="e#3283#3284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/Timer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+          <folding>
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartsUI/Dots/SeriesOfDots.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIQuality/ChartUIQualityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="126" column="12" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChartsUI/ChartsUIDistance/ChartUIDistanceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="229" column="38" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
+        <state relative-caret-position="324">
+          <caret line="134" column="31" selection-start-line="134" selection-start-column="31" selection-end-line="134" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

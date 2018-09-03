@@ -7,6 +7,10 @@ import java.util.List;
 
 public class SeriesOfChartQuality implements Series {
 
+    public List<SeriesOfDots> getAccuracyQualityOfVideo() {
+        return accuracyQualityOfVideo;
+    }
+
     private List<SeriesOfDots> accuracyQualityOfVideo;
 
     public SeriesOfChartQuality() {
@@ -15,7 +19,7 @@ public class SeriesOfChartQuality implements Series {
 
 
     @Override
-    public ArrayList<XYChart.Series> getSeries() {
+    public List<XYChart.Series> getSeries() {
         return (ArrayList<XYChart.Series>) Utils.Utils.StringArrayToSeries(accuracyQualityOfVideo);
     }
 

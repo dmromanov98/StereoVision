@@ -15,6 +15,14 @@ public class SeriesOfDots {
 
     private String nameOfSeries;
 
+    public List<String[]> getParameters() {
+        return parameters;
+    }
+
+    public String[] getLastParameters() {
+        return parameters.get(parameters.size()-1);
+    }
+
     /**
      * This value stores the camera settings when you add each point
      * <p>
@@ -28,6 +36,12 @@ public class SeriesOfDots {
      * 4 - Focal length
      * 5 - Quality of video
      * 6 - Staff update period
+     * 7 - which algorithm
+     * 8 - start distance
+     * 9 - step
+     * 10 - number of measurements(ColMeasurement)
+     * 11 - duration of measurement
+     * 12 - number of measurement for given time
      */
     private List<String[]> parameters;
 

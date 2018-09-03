@@ -10,19 +10,19 @@ import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.collections.ObservableList;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.zip.ZipFile;
 
 import static Utils.Test.testOnInteger;
 import static Utils.Test.testOnDouble;
@@ -89,7 +89,8 @@ public class ChartUIDistanceController implements ChartUiController {
     private double cordsResult = 0;
     private SeriesOfChartDistance seriesOfChartDistance = new SeriesOfChartDistance();
     private SeriesOfDots seriesOfDots;
-
+    private String finalStartDistance = "15";
+    private String finalColMeasurement = "5";
     @Override
     public void addDotToSeries() {
 
@@ -103,7 +104,7 @@ public class ChartUIDistanceController implements ChartUiController {
         seriesOfDots.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
 
-        String[] parameters = new String[7];
+        String[] parameters = new String[13];
         parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue()) + " " + String.valueOf(mwc.getScrollHueStop().getValue());
         parameters[1] = String.valueOf(mwc.getScrollSaturationStart().getValue()) + " " + String.valueOf(mwc.getScrollSaturationStop().getValue());
         parameters[2] = String.valueOf(mwc.getScrollValueStart().getValue()) + " " + String.valueOf(mwc.getScrollValueStop().getValue());
@@ -116,6 +117,12 @@ public class ChartUIDistanceController implements ChartUiController {
             parameters[5] = "480p";
 
         parameters[6] = mwc.getStaffUpdatePeriodField().getText();
+        parameters[7] = (mwc.getCheckBoxAlgorithmOne().isSelected()) ? "1" : "2";
+        parameters[8] = finalStartDistance;
+        parameters[9] = String.valueOf(step);
+        parameters[10] = finalColMeasurement;
+        parameters[11] = String.valueOf(Timer.getDurationOfMeasurement());
+        parameters[12] = String.valueOf(Timer.getNumberOfMeasurementsForGivenTime());
 
         seriesOfDots.addParameters(parameters);
 
@@ -125,7 +132,7 @@ public class ChartUIDistanceController implements ChartUiController {
 
         if (colMeasurement == 0) {
             seriesOfChartDistance.addSeries(seriesOfDots);
-            startDistance = 15;
+            setStartDistance();
             infoTextLabel.setText("Set the distance between the cameras in the main window, enter the measuring " +
                     "step in the current window (the distance to which you will move the object)" +
                     ",enter number of measurements, Duration of measurement(Second), " +
@@ -164,11 +171,12 @@ public class ChartUIDistanceController implements ChartUiController {
                         series.get(series.size() - 1).setName(String.valueOf(distanceBetweenCameras) + " cm");
 
                         seriesOfDots = new SeriesOfDots(String.valueOf(distanceBetweenCameras) + " cm");
-
+                        finalStartDistance = String.valueOf(startDistance);
                         chart.getData().add(series.get(series.size() - 1));
 
                         step = Integer.valueOf(stepField.getText());
                         colMeasurement = Integer.valueOf(colMeasurements.getText());
+                        finalColMeasurement = String.valueOf(colMeasurement);
                         measurementButton.setText("Start Measuring");
                     } else {
                         mwc.dialogWindow("Error entering data!", "Number of measurements for given time" +
@@ -214,24 +222,42 @@ public class ChartUIDistanceController implements ChartUiController {
     public void loadGraphs() {
         JButton open = new JButton();
         JFileChooser fileChooser = new JFileChooser();
-        //fileChooser.setCurrentDirectory(new java.io.File("C:/"));
-        fileChooser.setCurrentDirectory(new java.io.File("A:\\IdeaProjects\\StereoVision\\GraphsSaves\\D(02.09.2018).json"));
+        fileChooser.setCurrentDirectory(new java.io.File("C:/"));
+        //fileChooser.setCurrentDirectory(new java.io.File("A:\\IdeaProjects\\StereoVision\\GraphsSaves\\D(02.09.2018).json"));
         fileChooser.setDialogTitle("Choose distance chart file");
         fileChooser.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
         if (fileChooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
         }
 
         String fileName = fileChooser.getSelectedFile().getAbsolutePath();
-        System.out.println(fileName);
+
         seriesOfChartDistance = Deserialization.deserializeDistance(fileName);
 
         for(XYChart.Series s : seriesOfChartDistance.getSeries()) {
-            //System.out.println(s.getName()+" "+s.getData());
-            ObservableList<XYChart.Data> data = s.getData();
-            //for(XYChart.Data d:s.getData())
-            chart.getData().addAll(s);
+            chart.getData().add(s);
         }
 
+        String[] parameters = seriesOfChartDistance.getAccuracyDistanceBetweenCameras().
+                get(seriesOfChartDistance.getAccuracyDistanceBetweenCameras().size()-1).getLastParameters();
+
+
+        distanceFromCamerasToObjectField.setText(parameters[8]);
+        setStartDistance();
+        stepField.setText(parameters[9]);
+        colMeasurements.setText(parameters[10]);
+        durationOfMeasurementField.setText(parameters[11]);
+        numberOfMeasurementsForGivenTimeField.setText(parameters[12]);
+        loadParameters(parameters);
+        //new LoadParameters().loadParameters(mwc,parameters);
+    }
+
+    public void loadParameters(String[] parameters) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mwc.loadParameters(parameters);
+            }
+        });
     }
 
     @Override

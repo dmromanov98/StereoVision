@@ -24,6 +24,15 @@ public class Timer implements Runnable {
 
 
     private static int durationOfMeasurement = 5;
+
+    public static int getDurationOfMeasurement() {
+        return durationOfMeasurement;
+    }
+
+    public static int getNumberOfMeasurementsForGivenTime() {
+        return numberOfMeasurementsForGivenTime;
+    }
+
     private static int numberOfMeasurementsForGivenTime = 5;
 
     public static int startingTimer(int colMeasurement, Label infoTextLabel){

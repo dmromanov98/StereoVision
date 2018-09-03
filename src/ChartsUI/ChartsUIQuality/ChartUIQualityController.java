@@ -9,6 +9,7 @@ import ChartsUI.Dots.SeriesOfDots;
 import Utils.Timer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
@@ -87,7 +88,8 @@ public class ChartUIQualityController implements ChartUiController {
     private double cordsResult = 0;
     private SeriesOfChartQuality seriesOfChartQuality = new SeriesOfChartQuality();
     private SeriesOfDots seriesOfDots;
-
+    private String finalStartDistance = "15";
+    private String finalColMeasurement = "5";
     @Override
     public void addDotToSeries() {
 
@@ -100,7 +102,7 @@ public class ChartUIQualityController implements ChartUiController {
 
         seriesOfDots.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
 
-        String[] parameters = new String[7];
+        String[] parameters = new String[13];
         parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue()) + " " + String.valueOf(mwc.getScrollHueStop().getValue());
         parameters[1] = String.valueOf(mwc.getScrollSaturationStart().getValue()) + " " + String.valueOf(mwc.getScrollSaturationStop().getValue());
         parameters[2] = String.valueOf(mwc.getScrollValueStart().getValue()) + " " + String.valueOf(mwc.getScrollValueStop().getValue());
@@ -108,6 +110,12 @@ public class ChartUIQualityController implements ChartUiController {
         parameters[4] = mwc.getFocalLengthField().getText();
         parameters[5] = qualityOfVideo;
         parameters[6] = mwc.getStaffUpdatePeriodField().getText();
+        parameters[7] = (mwc.getCheckBoxAlgorithmOne().isSelected()) ? "1" : "2";
+        parameters[8] = finalStartDistance;
+        parameters[9] = String.valueOf(step);
+        parameters[10] = finalColMeasurement;
+        parameters[11] = String.valueOf(Timer.getDurationOfMeasurement());
+        parameters[12] = String.valueOf(Timer.getNumberOfMeasurementsForGivenTime());
 
         seriesOfDots.addParameters(parameters);
 
@@ -116,7 +124,7 @@ public class ChartUIQualityController implements ChartUiController {
 
         if (colMeasurement == 0) {
             seriesOfChartQuality.addSeries(seriesOfDots);
-            startDistance = 15;
+            setStartDistance();
             infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
                     "step in the current window (the distance to which you will move the object)" +
                     ",enter number of measurements, Duration of measurement(Second), " +
@@ -158,12 +166,13 @@ public class ChartUIQualityController implements ChartUiController {
 
                         seriesOfDots = new SeriesOfDots(qualityOfVideo);
 
-
+                        finalStartDistance = String.valueOf(startDistance);
                         series.get(series.size() - 1).setName(qualityOfVideo);
                         chart.getData().add(series.get(series.size() - 1));
 
                         step = Integer.valueOf(stepField.getText());
                         colMeasurement = Integer.valueOf(colMeasurements.getText());
+                        finalColMeasurement = String.valueOf(colMeasurement);
                         measurementButton.setText("Start Measuring");
 
                     } else {
@@ -221,13 +230,38 @@ public class ChartUIQualityController implements ChartUiController {
 
         seriesOfChartQuality = Deserialization.deserializeQuality(fileName);
 
-        for(XYChart.Series s : seriesOfChartQuality.getSeries())
+        for(XYChart.Series s : seriesOfChartQuality.getSeries()) {
             chart.getData().add(s);
+        }
 
+        mwc.setDistanceBetweenCameras();
+
+        String[] parameters = seriesOfChartQuality.getAccuracyQualityOfVideo().
+                get(seriesOfChartQuality.getAccuracyQualityOfVideo().size()-1).getLastParameters();
+
+
+        distanceFromCamerasToObjectField.setText(parameters[8]);
+        setStartDistance();
+        stepField.setText(parameters[9]);
+        colMeasurements.setText(parameters[10]);
+        durationOfMeasurementField.setText(parameters[11]);
+        numberOfMeasurementsForGivenTimeField.setText(parameters[12]);
+
+        loadParameters(parameters);
+    }
+
+    public void loadParameters(String[] parameters) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mwc.loadParameters(parameters);
+            }
+        });
     }
 
     @Override
     public void saveGraphs() {
         mwc.dialogWindow("Saving...", Serialization.serialize(seriesOfChartQuality), stackPane);
     }
+
 }
