@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
@@ -99,9 +98,9 @@ public class ChartUIDistanceController implements ChartUiController {
         else
             accuracy = cordsResult / startDistance;
 
-        series.get(series.size() - 1).getData().add(new XYChart.Data(String.valueOf(startDistance), accuracy));
+        series.get(series.size() - 1).getData().add(new XYChart.Data(startDistance, accuracy));
 
-        seriesOfDots.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
+        seriesOfDots.addData(new XYChart.Data(startDistance, accuracy));
 
 
         String[] parameters = new String[13];
@@ -222,8 +221,8 @@ public class ChartUIDistanceController implements ChartUiController {
     public void loadGraphs() {
         JButton open = new JButton();
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new java.io.File("C:/"));
-        //fileChooser.setCurrentDirectory(new java.io.File("A:\\IdeaProjects\\StereoVision\\GraphsSaves\\D(02.09.2018).json"));
+        //fileChooser.setCurrentDirectory(new java.io.File("C:/"));
+        fileChooser.setCurrentDirectory(new java.io.File("A:\\IdeaProjects\\StereoVision\\GraphsSaves\\"));
         fileChooser.setDialogTitle("Choose distance chart file");
         fileChooser.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
         if (fileChooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
@@ -231,10 +230,9 @@ public class ChartUIDistanceController implements ChartUiController {
 
         String fileName = fileChooser.getSelectedFile().getAbsolutePath();
 
-        seriesOfChartDistance = Deserialization.deserializeDistance(fileName);
-
-        for(XYChart.Series s : seriesOfChartDistance.getSeries()) {
-            chart.getData().add(s);
+        for (SeriesOfDots s : Deserialization.deserializeDistance(fileName).getAccuracyDistanceBetweenCameras()) {
+            seriesOfChartDistance.addSeries(s);
+            chart.getData().add(s.getSeries());
         }
 
         String[] parameters = seriesOfChartDistance.getAccuracyDistanceBetweenCameras().
@@ -248,7 +246,6 @@ public class ChartUIDistanceController implements ChartUiController {
         durationOfMeasurementField.setText(parameters[11]);
         numberOfMeasurementsForGivenTimeField.setText(parameters[12]);
         loadParameters(parameters);
-        //new LoadParameters().loadParameters(mwc,parameters);
     }
 
     public void loadParameters(String[] parameters) {

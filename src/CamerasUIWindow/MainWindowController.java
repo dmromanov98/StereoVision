@@ -347,7 +347,6 @@ public class MainWindowController implements Initializable {
             }
         }
         openedFromChange = false;
-        //System.out.println(capture.isOpened());
     }
 
     public void changeSecondCamera() {
@@ -459,8 +458,6 @@ public class MainWindowController implements Initializable {
         Imgproc.cvtColor(mat, hsv, Imgproc.COLOR_BGR2HSV);
         double[] hcvValues = hsv.get(0, 0);
 
-        //System.out.println(mat.dump() + "\n" + hsv.dump());
-
         scrollHueStart.setValue(hcvValues[0]);
         scrollHueStop.setValue((int) hcvValues[0] * 4.8);
 
@@ -500,8 +497,6 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    private static double distance = 0;
-
     public void showDistance(double distance) {
         lblDistance1.setText(String.valueOf(distance));
         lblDistance2.setText(String.valueOf(distance));
@@ -521,7 +516,6 @@ public class MainWindowController implements Initializable {
     }
 
     public void setVideoQuality() {
-        //System.out.println(qualityComboBox.getSelectionModel().selectedItemProperty());
 
         if (qualityComboBox.getSelectionModel().selectedItemProperty().getValue().equals("480p")) {
             widthOfVideo = 640;

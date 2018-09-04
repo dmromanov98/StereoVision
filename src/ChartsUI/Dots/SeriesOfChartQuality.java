@@ -28,4 +28,11 @@ public class SeriesOfChartQuality implements Series {
     public void addSeries(SeriesOfDots seriesOfDots) {
         this.accuracyQualityOfVideo.add(seriesOfDots);
     }
+
+    public SeriesOfChartQuality addSeriesToThis(SeriesOfChartQuality socq){
+        for(SeriesOfDots sod : socq.getAccuracyQualityOfVideo()){
+            accuracyQualityOfVideo.add(sod);
+        }
+        return this;
+    }
 }

@@ -19,8 +19,18 @@ public class SeriesOfDots {
         return parameters;
     }
 
+    public XYChart.Series getSeries() {
+        XYChart.Series series = new XYChart.Series();
+        series.setName(nameOfSeries);
+        for (String s : dots) {
+            String[] array = s.split(" ");
+            series.getData().add(new XYChart.Data(Double.valueOf(array[0]),Double.valueOf(array[1])));
+        }
+        return series;
+    }
+
     public String[] getLastParameters() {
-        return parameters.get(parameters.size()-1);
+        return parameters.get(parameters.size() - 1);
     }
 
     /**

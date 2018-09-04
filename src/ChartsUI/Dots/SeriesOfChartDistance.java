@@ -29,4 +29,10 @@ public class SeriesOfChartDistance implements ChartsUI.Dots.Series {
         this.accuracyDistanceBetweenCameras.add(seriesOfDots);
     }
 
+    public SeriesOfChartDistance addSeriesToThis(SeriesOfChartDistance socd){
+        for(SeriesOfDots sod : socd.getAccuracyDistanceBetweenCameras()){
+            accuracyDistanceBetweenCameras.add(sod);
+        }
+        return this;
+    }
 }

@@ -87,7 +87,7 @@
         <AreaChart fx:id="chart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                    prefHeight="598.0" prefWidth="1281.0" StackPane.alignment="TOP_LEFT">
             <xAxis>
-                <CategoryAxis side="BOTTOM"/>
+                <NumberAxis side="BOTTOM"/>
             </xAxis>
             <yAxis>
                 <NumberAxis side="LEFT"/>

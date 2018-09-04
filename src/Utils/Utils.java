@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ChartsUI.Dots.SeriesOfDots;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.chart.XYChart;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -19,7 +18,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
-import javax.swing.*;
 
 import static org.opencv.core.CvType.CV_8UC3;
 
@@ -46,11 +44,8 @@ public final class Utils {
             XYChart.Series series1 = new XYChart.Series();
             for (String dots : sod.getDots()) {
                 String[] strings = dots.split(" ");
-                //System.out.println(strings[0]+" "+strings[1]+" "+sod.getNameOfSeries());
                 series1.setName(sod.getNameOfSeries());
-                //System.out.println(series1.getName());
-               // series1.getData().add((int) Double.parseDouble(strings[0]), strings[1]);
-                series1.getData().add(new XYChart.Data(strings[0], Double.valueOf(strings[1])));
+                series1.getData().add(new XYChart.Data(Double.valueOf(strings[0]), Double.valueOf(strings[1])));
 
             }
             series.add(series1);

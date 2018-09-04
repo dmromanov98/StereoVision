@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -63,7 +64,6 @@ public class ChartUIQualityController implements ChartUiController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         infoTextLabel.setText("Set the quality of the video in the main window, enter the measuring " +
                 "step in the current window (the distance to which you will move the object)" +
                 ",enter number of measurements, Duration of measurement(Second), " +
@@ -90,6 +90,7 @@ public class ChartUIQualityController implements ChartUiController {
     private SeriesOfDots seriesOfDots;
     private String finalStartDistance = "15";
     private String finalColMeasurement = "5";
+
     @Override
     public void addDotToSeries() {
 
@@ -98,9 +99,9 @@ public class ChartUIQualityController implements ChartUiController {
         else
             accuracy = cordsResult / startDistance;
 
-        series.get(series.size() - 1).getData().add(new XYChart.Data(String.valueOf(startDistance), accuracy));
+        series.get(series.size() - 1).getData().add(new XYChart.Data(startDistance, accuracy));
 
-        seriesOfDots.addData(new XYChart.Data(String.valueOf(startDistance), accuracy));
+        seriesOfDots.addData(new XYChart.Data(startDistance, accuracy));
 
         String[] parameters = new String[13];
         parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue()) + " " + String.valueOf(mwc.getScrollHueStop().getValue());
@@ -220,7 +221,8 @@ public class ChartUIQualityController implements ChartUiController {
     public void loadGraphs() {
         JButton open = new JButton();
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new java.io.File("C:/"));
+        //fileChooser.setCurrentDirectory(new java.io.File("C:/"));
+        fileChooser.setCurrentDirectory(new java.io.File("A:\\IdeaProjects\\StereoVision\\GraphsSaves\\"));
         fileChooser.setDialogTitle("Choose quality chart file");
         fileChooser.setFileSelectionMode(JFileChooser.APPROVE_OPTION);
         if (fileChooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
@@ -228,16 +230,23 @@ public class ChartUIQualityController implements ChartUiController {
 
         String fileName = fileChooser.getSelectedFile().getAbsolutePath();
 
-        seriesOfChartQuality = Deserialization.deserializeQuality(fileName);
-
-        for(XYChart.Series s : seriesOfChartQuality.getSeries()) {
-            chart.getData().add(s);
-        }
-
+//        if (seriesOfChartQuality.getSeries().size() == 0) {
+//            seriesOfChartQuality = Deserialization.deserializeQuality(fileName);
+//
+//            for (XYChart.Series s : seriesOfChartQuality.getSeries()) {
+//                chart.getData().add(s);
+//            }
+//
+//        } else {
+            for (SeriesOfDots s : Deserialization.deserializeQuality(fileName).getAccuracyQualityOfVideo()) {
+                seriesOfChartQuality.addSeries(s);
+                chart.getData().add(s.getSeries());
+            }
+        //}
         mwc.setDistanceBetweenCameras();
 
         String[] parameters = seriesOfChartQuality.getAccuracyQualityOfVideo().
-                get(seriesOfChartQuality.getAccuracyQualityOfVideo().size()-1).getLastParameters();
+                get(seriesOfChartQuality.getAccuracyQualityOfVideo().size() - 1).getLastParameters();
 
 
         distanceFromCamerasToObjectField.setText(parameters[8]);
@@ -248,6 +257,7 @@ public class ChartUIQualityController implements ChartUiController {
         numberOfMeasurementsForGivenTimeField.setText(parameters[12]);
 
         loadParameters(parameters);
+
     }
 
     public void loadParameters(String[] parameters) {
