@@ -2,8 +2,6 @@ package CamerasUIWindow;
 
 import ChartsUI.ChartsUIDistance.ChartUIDistanceController;
 import ChartsUI.ChartsUIDistance.MainChartUiDistance;
-import ChartsUI.ChartsUIQuality.ChartUIQualityController;
-import ChartsUI.ChartsUIQuality.MainChartUiQuality;
 import Utils.Test;
 import Utils.Utils;
 import com.jfoenix.controls.*;
@@ -434,7 +432,6 @@ public class MainWindowController implements Initializable {
 
         GUIs.setMwc(this);
         ChartUIDistanceController.setMwc(this);
-        ChartUIQualityController.setMwc(this);
 
     }
 
@@ -557,10 +554,6 @@ public class MainWindowController implements Initializable {
 
     public void drawAccuracyDistance() {
         MainChartUiDistance.initWindow();
-    }
-
-    public void drawAccuracyQuality() {
-        MainChartUiQuality.initWindow();
     }
 
     public void loadParameters(String[] parameters) {

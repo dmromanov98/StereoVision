@@ -4,6 +4,7 @@ import CamerasUIWindow.MainWindowController;
 import ChartsUI.ChartUiController;
 import ChartsUI.Dots.Gson.Deserialization;
 import ChartsUI.Dots.Gson.Serialization;
+import ChartsUI.Dots.Series;
 import ChartsUI.Dots.SeriesOfChartDistance;
 import ChartsUI.Dots.SeriesOfDots;
 import Utils.Timer;
@@ -12,21 +13,29 @@ import com.jfoenix.controls.JFXTextField;
 
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 import javax.swing.*;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static Utils.Test.testOnInteger;
 import static Utils.Test.testOnDouble;
 
-public class ChartUIDistanceController implements ChartUiController {
+public class ChartUIDistanceController implements ChartUiController, Initializable {
     @FXML
     private AreaChart chart;
 
@@ -90,6 +99,7 @@ public class ChartUIDistanceController implements ChartUiController {
     private SeriesOfDots seriesOfDots;
     private String finalStartDistance = "15";
     private String finalColMeasurement = "5";
+
     @Override
     public void addDotToSeries() {
 
@@ -98,10 +108,12 @@ public class ChartUIDistanceController implements ChartUiController {
         else
             accuracy = cordsResult / startDistance;
 
-        series.get(series.size() - 1).getData().add(new XYChart.Data(startDistance, accuracy));
+        XYChart.Data<Number, Number> data = new XYChart.Data<>(startDistance, accuracy);
+        series.get(series.size() - 1).getData().add(data);
 
-        seriesOfDots.addData(new XYChart.Data(startDistance, accuracy));
 
+        seriesOfDots.addData(data);
+        data.getNode().setOnMouseClicked(e -> outInfoAboutData(data));
 
         String[] parameters = new String[13];
         parameters[0] = String.valueOf(mwc.getScrollHueStart().getValue()) + " " + String.valueOf(mwc.getScrollHueStop().getValue());
@@ -140,6 +152,60 @@ public class ChartUIDistanceController implements ChartUiController {
         }
     }
 
+    private void outInfoAboutData(XYChart.Data<Number, Number> data) {
+
+        List<SeriesOfDots> seriesOfDotsH = seriesOfChartDistance.getAccuracyDistanceBetweenCameras();
+        boolean found = false;
+        for (int j = 0; j < seriesOfDotsH.size(); j++) {
+            List<String> dots = seriesOfDotsH.get(j).getDots();
+            for (int i = 0; i < dots.size(); i++) {
+                String[] dotArr = dots.get(i).split(" ");
+                if (dotArr[0].equals(data.getXValue().toString()) && dotArr[1].equals(data.getYValue().toString())) {
+                    String params[] = seriesOfDotsH.get(j).getParameters().get(i);
+                    System.out.println(params);
+                    String info = "Hue : " + params[0] + "\n" +
+                            "Saturation : " + params[1] + "\n" +
+                            "Value : " + params[2] + "\n" +
+                            "Distance between cameras : " + params[3] + "\n" +
+                            "Focal length : " + params[4] + "\n" +
+                            "Quality of video : " + params[5] + "\n" +
+                            "Staff update period : " + params[6] + "\n" +
+                            "Algorithm : " + params[7] + "\n" +
+                            "Duration of measurement : " + params[11] + "\n" +
+                            "Number of measurement for given time : " + params[12];
+
+                    showInfoAboutDot(info, dotArr[0] + ";" + dotArr[1]);
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+        if(!found){
+                List<String> dots = seriesOfDots.getDots();
+                for (int i = 0; i < dots.size(); i++) {
+                    String[] dotArr = dots.get(i).split(" ");
+                    if (dotArr[0].equals(data.getXValue().toString()) && dotArr[1].equals(data.getYValue().toString())) {
+                        String params[] = seriesOfDots.getParameters().get(i);
+                        String info = "Hue : " + params[0] + "\n" +
+                                "Saturation : " + params[1] + "\n" +
+                                "Value : " + params[2] + "\n" +
+                                "Distance between cameras : " + params[3] + "\n" +
+                                "Focal length : " + params[4] + "\n" +
+                                "Quality of video : " + params[5] + "\n" +
+                                "Staff update period : " + params[6] + "\n" +
+                                "Algorithm : " + params[7] + "\n" +
+                                "Duration of measurement : " + params[11] + "\n" +
+                                "Number of measurement for given time : " + params[12];
+
+                        showInfoAboutDot(info, dotArr[0] + ";" + dotArr[1]);
+                        found = true;
+                        break;
+                    }
+            }
+        }
+    }
+
     @Override
     public void coordinateCalculation() {
         if (cordsResult == 0) {
@@ -148,6 +214,7 @@ public class ChartUIDistanceController implements ChartUiController {
             cordsResult = (cordsResult + Double.valueOf(mwc.getLblDistance1().getText())) / 2;
         }
     }
+
 
     @Override
     public void measurementBtn() {
@@ -198,6 +265,15 @@ public class ChartUIDistanceController implements ChartUiController {
 
     }
 
+    public void showInfoAboutDot(String info, String dot) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mwc.dialogWindow("Information about dot(" + dot + ")", info, stackPane);
+            }
+        });
+    }
+
     @Override
     public void setStartDistance() {
         if (testOnDouble(distanceFromCamerasToObjectField.getText()) &&
@@ -232,11 +308,20 @@ public class ChartUIDistanceController implements ChartUiController {
 
         for (SeriesOfDots s : Deserialization.deserializeDistance(fileName).getAccuracyDistanceBetweenCameras()) {
             seriesOfChartDistance.addSeries(s);
-            chart.getData().add(s.getSeries());
+            XYChart.Series series = new XYChart.Series();
+            chart.getData().add(series);
+            s.getDots().forEach(dot->{
+                String dotArr[] = dot.split(" ");
+                XYChart.Data data = new XYChart.Data(Double.valueOf(dotArr[0]),Double.valueOf(dotArr[1]));
+                series.setName(s.getNameOfSeries());
+                series.getData().add(data);
+                data.getNode().setOnMouseClicked(event -> outInfoAboutData(data));
+            });
+
         }
 
         String[] parameters = seriesOfChartDistance.getAccuracyDistanceBetweenCameras().
-                get(seriesOfChartDistance.getAccuracyDistanceBetweenCameras().size()-1).getLastParameters();
+                get(seriesOfChartDistance.getAccuracyDistanceBetweenCameras().size() - 1).getLastParameters();
 
 
         distanceFromCamerasToObjectField.setText(parameters[8]);

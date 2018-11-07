@@ -44,7 +44,7 @@ public class MainChartUiDistance extends Application {
             System.exit(10);
         }
 
-        primaryStage.setTitle("Chart Accuracy/Distance");
+        primaryStage.setTitle("Chart");
         primaryStage.setResizable(false);
 
         Scene scene = new Scene(rootLayout);
