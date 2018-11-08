@@ -14,6 +14,8 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -108,6 +110,9 @@ public class ChartUIDistanceController implements ChartUiController, Initializab
         else
             accuracy = cordsResult / startDistance;
 
+        System.out.println("CordsResult = " + cordsResult + " StartDistance = " + startDistance + " Accuracy = " + accuracy);
+
+        cordsResult = 0;
         XYChart.Data<Number, Number> data = new XYChart.Data<>(startDistance, accuracy);
         series.get(series.size() - 1).getData().add(data);
 
@@ -181,27 +186,27 @@ public class ChartUIDistanceController implements ChartUiController, Initializab
             }
             if (found) break;
         }
-        if(!found){
-                List<String> dots = seriesOfDots.getDots();
-                for (int i = 0; i < dots.size(); i++) {
-                    String[] dotArr = dots.get(i).split(" ");
-                    if (dotArr[0].equals(data.getXValue().toString()) && dotArr[1].equals(data.getYValue().toString())) {
-                        String params[] = seriesOfDots.getParameters().get(i);
-                        String info = "Hue : " + params[0] + "\n" +
-                                "Saturation : " + params[1] + "\n" +
-                                "Value : " + params[2] + "\n" +
-                                "Distance between cameras : " + params[3] + "\n" +
-                                "Focal length : " + params[4] + "\n" +
-                                "Quality of video : " + params[5] + "\n" +
-                                "Staff update period : " + params[6] + "\n" +
-                                "Algorithm : " + params[7] + "\n" +
-                                "Duration of measurement : " + params[11] + "\n" +
-                                "Number of measurement for given time : " + params[12];
+        if (!found) {
+            List<String> dots = seriesOfDots.getDots();
+            for (int i = 0; i < dots.size(); i++) {
+                String[] dotArr = dots.get(i).split(" ");
+                if (dotArr[0].equals(data.getXValue().toString()) && dotArr[1].equals(data.getYValue().toString())) {
+                    String params[] = seriesOfDots.getParameters().get(i);
+                    String info = "Hue : " + params[0] + "\n" +
+                            "Saturation : " + params[1] + "\n" +
+                            "Value : " + params[2] + "\n" +
+                            "Distance between cameras : " + params[3] + "\n" +
+                            "Focal length : " + params[4] + "\n" +
+                            "Quality of video : " + params[5] + "\n" +
+                            "Staff update period : " + params[6] + "\n" +
+                            "Algorithm : " + params[7] + "\n" +
+                            "Duration of measurement : " + params[11] + "\n" +
+                            "Number of measurement for given time : " + params[12];
 
-                        showInfoAboutDot(info, dotArr[0] + ";" + dotArr[1]);
-                        found = true;
-                        break;
-                    }
+                    showInfoAboutDot(info, dotArr[0] + ";" + dotArr[1]);
+                    found = true;
+                    break;
+                }
             }
         }
     }
@@ -310,9 +315,9 @@ public class ChartUIDistanceController implements ChartUiController, Initializab
             seriesOfChartDistance.addSeries(s);
             XYChart.Series series = new XYChart.Series();
             chart.getData().add(series);
-            s.getDots().forEach(dot->{
+            s.getDots().forEach(dot -> {
                 String dotArr[] = dot.split(" ");
-                XYChart.Data data = new XYChart.Data(Double.valueOf(dotArr[0]),Double.valueOf(dotArr[1]));
+                XYChart.Data data = new XYChart.Data(Double.valueOf(dotArr[0]), Double.valueOf(dotArr[1]));
                 series.setName(s.getNameOfSeries());
                 series.getData().add(data);
                 data.getNode().setOnMouseClicked(event -> outInfoAboutData(data));
